@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF600903179F6C0200C2DA69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF600902179F6C0200C2DA69 /* UIKit.framework */; };
+		AF600905179F6C0200C2DA69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF600904179F6C0200C2DA69 /* Foundation.framework */; };
+		AF600907179F6C0200C2DA69 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF600906179F6C0200C2DA69 /* CoreGraphics.framework */; };
+		AF60090D179F6C0200C2DA69 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF60090B179F6C0200C2DA69 /* InfoPlist.strings */; };
+		AF60090F179F6C0200C2DA69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AF60090E179F6C0200C2DA69 /* main.m */; };
+		AF600913179F6C0200C2DA69 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF600912179F6C0200C2DA69 /* AppDelegate.m */; };
+		AF600915179F6C0200C2DA69 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AF600914179F6C0200C2DA69 /* Default.png */; };
+		AF600917179F6C0200C2DA69 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF600916179F6C0200C2DA69 /* Default@2x.png */; };
+		AF600919179F6C0200C2DA69 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF600918179F6C0200C2DA69 /* Default-568h@2x.png */; };
+		AF60091C179F6C0200C2DA69 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF60091B179F6C0200C2DA69 /* MainViewController.m */; };
+		AF60091F179F6C0200C2DA69 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF60091E179F6C0200C2DA69 /* FlipsideViewController.m */; };
+		AF600922179F6C0200C2DA69 /* MainViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF600920179F6C0200C2DA69 /* MainViewController_iPhone.xib */; };
+		AF600925179F6C0200C2DA69 /* MainViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF600923179F6C0200C2DA69 /* MainViewController_iPad.xib */; };
+		AF600928179F6C0200C2DA69 /* FlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF600926179F6C0200C2DA69 /* FlipsideViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AF6008FF179F6C0200C2DA69 /* Backgammon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Backgammon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF600902179F6C0200C2DA69 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AF600904179F6C0200C2DA69 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AF600906179F6C0200C2DA69 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AF60090A179F6C0200C2DA69 /* Backgammon-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Backgammon-Info.plist"; sourceTree = "<group>"; };
+		AF60090C179F6C0200C2DA69 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AF60090E179F6C0200C2DA69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AF600910179F6C0200C2DA69 /* Backgammon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Backgammon-Prefix.pch"; sourceTree = "<group>"; };
+		AF600911179F6C0200C2DA69 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AF600912179F6C0200C2DA69 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AF600914179F6C0200C2DA69 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		AF600916179F6C0200C2DA69 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		AF600918179F6C0200C2DA69 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AF60091A179F6C0200C2DA69 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		AF60091B179F6C0200C2DA69 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		AF60091D179F6C0200C2DA69 /* FlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
+		AF60091E179F6C0200C2DA69 /* FlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
+		AF600921179F6C0200C2DA69 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController_iPhone.xib; sourceTree = "<group>"; };
+		AF600924179F6C0200C2DA69 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController_iPad.xib; sourceTree = "<group>"; };
+		AF600927179F6C0200C2DA69 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FlipsideViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF6008FC179F6C0200C2DA69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF600903179F6C0200C2DA69 /* UIKit.framework in Frameworks */,
+				AF600905179F6C0200C2DA69 /* Foundation.framework in Frameworks */,
+				AF600907179F6C0200C2DA69 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF6008F6179F6C0100C2DA69 = {
+			isa = PBXGroup;
+			children = (
+				AF600908179F6C0200C2DA69 /* Backgammon */,
+				AF600901179F6C0200C2DA69 /* Frameworks */,
+				AF600900179F6C0200C2DA69 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AF600900179F6C0200C2DA69 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF6008FF179F6C0200C2DA69 /* Backgammon.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF600901179F6C0200C2DA69 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF600902179F6C0200C2DA69 /* UIKit.framework */,
+				AF600904179F6C0200C2DA69 /* Foundation.framework */,
+				AF600906179F6C0200C2DA69 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF600908179F6C0200C2DA69 /* Backgammon */ = {
+			isa = PBXGroup;
+			children = (
+				AF600911179F6C0200C2DA69 /* AppDelegate.h */,
+				AF600912179F6C0200C2DA69 /* AppDelegate.m */,
+				AF60091A179F6C0200C2DA69 /* MainViewController.h */,
+				AF60091B179F6C0200C2DA69 /* MainViewController.m */,
+				AF60091D179F6C0200C2DA69 /* FlipsideViewController.h */,
+				AF60091E179F6C0200C2DA69 /* FlipsideViewController.m */,
+				AF600920179F6C0200C2DA69 /* MainViewController_iPhone.xib */,
+				AF600923179F6C0200C2DA69 /* MainViewController_iPad.xib */,
+				AF600926179F6C0200C2DA69 /* FlipsideViewController.xib */,
+				AF600909179F6C0200C2DA69 /* Supporting Files */,
+			);
+			path = Backgammon;
+			sourceTree = "<group>";
+		};
+		AF600909179F6C0200C2DA69 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AF60090A179F6C0200C2DA69 /* Backgammon-Info.plist */,
+				AF60090B179F6C0200C2DA69 /* InfoPlist.strings */,
+				AF60090E179F6C0200C2DA69 /* main.m */,
+				AF600910179F6C0200C2DA69 /* Backgammon-Prefix.pch */,
+				AF600914179F6C0200C2DA69 /* Default.png */,
+				AF600916179F6C0200C2DA69 /* Default@2x.png */,
+				AF600918179F6C0200C2DA69 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF6008FE179F6C0200C2DA69 /* Backgammon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF60092B179F6C0200C2DA69 /* Build configuration list for PBXNativeTarget "Backgammon" */;
+			buildPhases = (
+				AF6008FB179F6C0200C2DA69 /* Sources */,
+				AF6008FC179F6C0200C2DA69 /* Frameworks */,
+				AF6008FD179F6C0200C2DA69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Backgammon;
+			productName = Backgammon;
+			productReference = AF6008FF179F6C0200C2DA69 /* Backgammon.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF6008F7179F6C0100C2DA69 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = AF6008FA179F6C0100C2DA69 /* Build configuration list for PBXProject "Backgammon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AF6008F6179F6C0100C2DA69;
+			productRefGroup = AF600900179F6C0200C2DA69 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF6008FE179F6C0200C2DA69 /* Backgammon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF6008FD179F6C0200C2DA69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF60090D179F6C0200C2DA69 /* InfoPlist.strings in Resources */,
+				AF600915179F6C0200C2DA69 /* Default.png in Resources */,
+				AF600917179F6C0200C2DA69 /* Default@2x.png in Resources */,
+				AF600919179F6C0200C2DA69 /* Default-568h@2x.png in Resources */,
+				AF600922179F6C0200C2DA69 /* MainViewController_iPhone.xib in Resources */,
+				AF600925179F6C0200C2DA69 /* MainViewController_iPad.xib in Resources */,
+				AF600928179F6C0200C2DA69 /* FlipsideViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF6008FB179F6C0200C2DA69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF60090F179F6C0200C2DA69 /* main.m in Sources */,
+				AF600913179F6C0200C2DA69 /* AppDelegate.m in Sources */,
+				AF60091C179F6C0200C2DA69 /* MainViewController.m in Sources */,
+				AF60091F179F6C0200C2DA69 /* FlipsideViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AF60090B179F6C0200C2DA69 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF60090C179F6C0200C2DA69 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AF600920179F6C0200C2DA69 /* MainViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF600921179F6C0200C2DA69 /* en */,
+			);
+			name = MainViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		AF600923179F6C0200C2DA69 /* MainViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF600924179F6C0200C2DA69 /* en */,
+			);
+			name = MainViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		AF600926179F6C0200C2DA69 /* FlipsideViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF600927179F6C0200C2DA69 /* en */,
+			);
+			name = FlipsideViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AF600929179F6C0200C2DA69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF60092A179F6C0200C2DA69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF60092C179F6C0200C2DA69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Backgammon/Backgammon-Prefix.pch";
+				INFOPLIST_FILE = "Backgammon/Backgammon-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AF60092D179F6C0200C2DA69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Backgammon/Backgammon-Prefix.pch";
+				INFOPLIST_FILE = "Backgammon/Backgammon-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF6008FA179F6C0100C2DA69 /* Build configuration list for PBXProject "Backgammon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF600929179F6C0200C2DA69 /* Debug */,
+				AF60092A179F6C0200C2DA69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF60092B179F6C0200C2DA69 /* Build configuration list for PBXNativeTarget "Backgammon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF60092C179F6C0200C2DA69 /* Debug */,
+				AF60092D179F6C0200C2DA69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AF6008F7179F6C0100C2DA69 /* Project object */;
+}
