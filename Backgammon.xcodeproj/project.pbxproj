@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF1E553B17AF324F00672E4F /* dice1.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553517AF324F00672E4F /* dice1.png */; };
+		AF1E553C17AF324F00672E4F /* dice2.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553617AF324F00672E4F /* dice2.png */; };
+		AF1E553D17AF324F00672E4F /* dice3.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553717AF324F00672E4F /* dice3.png */; };
+		AF1E553E17AF324F00672E4F /* dice4.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553817AF324F00672E4F /* dice4.png */; };
+		AF1E553F17AF324F00672E4F /* dice5.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553917AF324F00672E4F /* dice5.png */; };
+		AF1E554017AF324F00672E4F /* dice6.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553A17AF324F00672E4F /* dice6.png */; };
 		AF600903179F6C0200C2DA69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF600902179F6C0200C2DA69 /* UIKit.framework */; };
 		AF600905179F6C0200C2DA69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF600904179F6C0200C2DA69 /* Foundation.framework */; };
 		AF600907179F6C0200C2DA69 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF600906179F6C0200C2DA69 /* CoreGraphics.framework */; };
@@ -21,9 +27,29 @@
 		AF600922179F6C0200C2DA69 /* MainViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF600920179F6C0200C2DA69 /* MainViewController_iPhone.xib */; };
 		AF600925179F6C0200C2DA69 /* MainViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF600923179F6C0200C2DA69 /* MainViewController_iPad.xib */; };
 		AF600928179F6C0200C2DA69 /* FlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF600926179F6C0200C2DA69 /* FlipsideViewController.xib */; };
+		AF600930179F704A00C2DA69 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF60092F179F704A00C2DA69 /* MainView.m */; };
+		AF7743BB17B33EE700303E64 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF7743BA17B33EE700303E64 /* AudioToolbox.framework */; };
+		AF7F13BC17A0B92B005FBADA /* Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7F13BB17A0B92B005FBADA /* Algorithm.m */; };
+		AFDBD2C617B3E50B000B4780 /* bump.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2BB17B3E50B000B4780 /* bump.wav */; };
+		AFDBD2C717B3E50B000B4780 /* dice.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2BC17B3E50B000B4780 /* dice.wav */; };
+		AFDBD2C817B3E50B000B4780 /* end.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2BD17B3E50B000B4780 /* end.wav */; };
+		AFDBD2C917B3E50B000B4780 /* illegal.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2BE17B3E50B000B4780 /* illegal.wav */; };
+		AFDBD2CA17B3E50B000B4780 /* lost.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2BF17B3E50B000B4780 /* lost.wav */; };
+		AFDBD2CB17B3E50B000B4780 /* new.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C017B3E50B000B4780 /* new.wav */; };
+		AFDBD2CC17B3E50B000B4780 /* pickup.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C117B3E50B000B4780 /* pickup.wav */; };
+		AFDBD2CD17B3E50B000B4780 /* place.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C217B3E50B000B4780 /* place.wav */; };
+		AFDBD2CE17B3E50B000B4780 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C317B3E50B000B4780 /* start.wav */; };
+		AFDBD2CF17B3E50B000B4780 /* undo.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C417B3E50B000B4780 /* undo.wav */; };
+		AFDBD2D017B3E50B000B4780 /* won.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C517B3E50B000B4780 /* won.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF1E553517AF324F00672E4F /* dice1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice1.png; sourceTree = "<group>"; };
+		AF1E553617AF324F00672E4F /* dice2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice2.png; sourceTree = "<group>"; };
+		AF1E553717AF324F00672E4F /* dice3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice3.png; sourceTree = "<group>"; };
+		AF1E553817AF324F00672E4F /* dice4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice4.png; sourceTree = "<group>"; };
+		AF1E553917AF324F00672E4F /* dice5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice5.png; sourceTree = "<group>"; };
+		AF1E553A17AF324F00672E4F /* dice6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice6.png; sourceTree = "<group>"; };
 		AF6008FF179F6C0200C2DA69 /* Backgammon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Backgammon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF600902179F6C0200C2DA69 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AF600904179F6C0200C2DA69 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,6 +70,22 @@
 		AF600921179F6C0200C2DA69 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController_iPhone.xib; sourceTree = "<group>"; };
 		AF600924179F6C0200C2DA69 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController_iPad.xib; sourceTree = "<group>"; };
 		AF600927179F6C0200C2DA69 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FlipsideViewController.xib; sourceTree = "<group>"; };
+		AF60092E179F704A00C2DA69 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		AF60092F179F704A00C2DA69 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
+		AF7743BA17B33EE700303E64 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		AF7F13BA17A0B92B005FBADA /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Algorithm.h; path = Backgammon/Algorithm.h; sourceTree = "<group>"; };
+		AF7F13BB17A0B92B005FBADA /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Algorithm.m; path = Backgammon/Algorithm.m; sourceTree = "<group>"; };
+		AFDBD2BB17B3E50B000B4780 /* bump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bump.wav; sourceTree = "<group>"; };
+		AFDBD2BC17B3E50B000B4780 /* dice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dice.wav; sourceTree = "<group>"; };
+		AFDBD2BD17B3E50B000B4780 /* end.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = end.wav; sourceTree = "<group>"; };
+		AFDBD2BE17B3E50B000B4780 /* illegal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = illegal.wav; sourceTree = "<group>"; };
+		AFDBD2BF17B3E50B000B4780 /* lost.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lost.wav; sourceTree = "<group>"; };
+		AFDBD2C017B3E50B000B4780 /* new.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = new.wav; sourceTree = "<group>"; };
+		AFDBD2C117B3E50B000B4780 /* pickup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pickup.wav; sourceTree = "<group>"; };
+		AFDBD2C217B3E50B000B4780 /* place.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = place.wav; sourceTree = "<group>"; };
+		AFDBD2C317B3E50B000B4780 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
+		AFDBD2C417B3E50B000B4780 /* undo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = undo.wav; sourceTree = "<group>"; };
+		AFDBD2C517B3E50B000B4780 /* won.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = won.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF7743BB17B33EE700303E64 /* AudioToolbox.framework in Frameworks */,
 				AF600903179F6C0200C2DA69 /* UIKit.framework in Frameworks */,
 				AF600905179F6C0200C2DA69 /* Foundation.framework in Frameworks */,
 				AF600907179F6C0200C2DA69 /* CoreGraphics.framework in Frameworks */,
@@ -60,10 +103,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF07F17417B36CE100F1B359 /* WAV Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFDBD2BB17B3E50B000B4780 /* bump.wav */,
+				AFDBD2BC17B3E50B000B4780 /* dice.wav */,
+				AFDBD2BD17B3E50B000B4780 /* end.wav */,
+				AFDBD2BE17B3E50B000B4780 /* illegal.wav */,
+				AFDBD2BF17B3E50B000B4780 /* lost.wav */,
+				AFDBD2C017B3E50B000B4780 /* new.wav */,
+				AFDBD2C117B3E50B000B4780 /* pickup.wav */,
+				AFDBD2C217B3E50B000B4780 /* place.wav */,
+				AFDBD2C317B3E50B000B4780 /* start.wav */,
+				AFDBD2C417B3E50B000B4780 /* undo.wav */,
+				AFDBD2C517B3E50B000B4780 /* won.wav */,
+			);
+			name = "WAV Files";
+			sourceTree = "<group>";
+		};
+		AF1E554117AF328600672E4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF07F17417B36CE100F1B359 /* WAV Files */,
+				AF1E553517AF324F00672E4F /* dice1.png */,
+				AF1E553617AF324F00672E4F /* dice2.png */,
+				AF1E553717AF324F00672E4F /* dice3.png */,
+				AF1E553817AF324F00672E4F /* dice4.png */,
+				AF1E553917AF324F00672E4F /* dice5.png */,
+				AF1E553A17AF324F00672E4F /* dice6.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		AF6008F6179F6C0100C2DA69 = {
 			isa = PBXGroup;
 			children = (
+				AF7F13BA17A0B92B005FBADA /* Algorithm.h */,
+				AF7F13BB17A0B92B005FBADA /* Algorithm.m */,
 				AF600908179F6C0200C2DA69 /* Backgammon */,
+				AF1E554117AF328600672E4F /* Resources */,
 				AF600901179F6C0200C2DA69 /* Frameworks */,
 				AF600900179F6C0200C2DA69 /* Products */,
 			);
@@ -80,6 +158,7 @@
 		AF600901179F6C0200C2DA69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF7743BA17B33EE700303E64 /* AudioToolbox.framework */,
 				AF600902179F6C0200C2DA69 /* UIKit.framework */,
 				AF600904179F6C0200C2DA69 /* Foundation.framework */,
 				AF600906179F6C0200C2DA69 /* CoreGraphics.framework */,
@@ -97,6 +176,8 @@
 				AF60091D179F6C0200C2DA69 /* FlipsideViewController.h */,
 				AF60091E179F6C0200C2DA69 /* FlipsideViewController.m */,
 				AF600920179F6C0200C2DA69 /* MainViewController_iPhone.xib */,
+				AF60092E179F704A00C2DA69 /* MainView.h */,
+				AF60092F179F704A00C2DA69 /* MainView.m */,
 				AF600923179F6C0200C2DA69 /* MainViewController_iPad.xib */,
 				AF600926179F6C0200C2DA69 /* FlipsideViewController.xib */,
 				AF600909179F6C0200C2DA69 /* Supporting Files */,
@@ -175,6 +256,23 @@
 				AF600922179F6C0200C2DA69 /* MainViewController_iPhone.xib in Resources */,
 				AF600925179F6C0200C2DA69 /* MainViewController_iPad.xib in Resources */,
 				AF600928179F6C0200C2DA69 /* FlipsideViewController.xib in Resources */,
+				AF1E553B17AF324F00672E4F /* dice1.png in Resources */,
+				AF1E553C17AF324F00672E4F /* dice2.png in Resources */,
+				AF1E553D17AF324F00672E4F /* dice3.png in Resources */,
+				AF1E553E17AF324F00672E4F /* dice4.png in Resources */,
+				AF1E553F17AF324F00672E4F /* dice5.png in Resources */,
+				AF1E554017AF324F00672E4F /* dice6.png in Resources */,
+				AFDBD2C617B3E50B000B4780 /* bump.wav in Resources */,
+				AFDBD2C717B3E50B000B4780 /* dice.wav in Resources */,
+				AFDBD2C817B3E50B000B4780 /* end.wav in Resources */,
+				AFDBD2C917B3E50B000B4780 /* illegal.wav in Resources */,
+				AFDBD2CA17B3E50B000B4780 /* lost.wav in Resources */,
+				AFDBD2CB17B3E50B000B4780 /* new.wav in Resources */,
+				AFDBD2CC17B3E50B000B4780 /* pickup.wav in Resources */,
+				AFDBD2CD17B3E50B000B4780 /* place.wav in Resources */,
+				AFDBD2CE17B3E50B000B4780 /* start.wav in Resources */,
+				AFDBD2CF17B3E50B000B4780 /* undo.wav in Resources */,
+				AFDBD2D017B3E50B000B4780 /* won.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +287,8 @@
 				AF600913179F6C0200C2DA69 /* AppDelegate.m in Sources */,
 				AF60091C179F6C0200C2DA69 /* MainViewController.m in Sources */,
 				AF60091F179F6C0200C2DA69 /* FlipsideViewController.m in Sources */,
+				AF600930179F704A00C2DA69 /* MainView.m in Sources */,
+				AF7F13BC17A0B92B005FBADA /* Algorithm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +394,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Backgammon/Backgammon-Prefix.pch";
 				INFOPLIST_FILE = "Backgammon/Backgammon-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -305,6 +406,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Backgammon/Backgammon-Prefix.pch";
 				INFOPLIST_FILE = "Backgammon/Backgammon-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -329,6 +431,7 @@
 				AF60092D179F6C0200C2DA69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -17,6 +17,7 @@
 @interface FlipsideViewController : UIViewController
 
 @property (weak, nonatomic) id <FlipsideViewControllerDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UISwitch *soundSwitch;
 
 - (IBAction)done:(id)sender;
 

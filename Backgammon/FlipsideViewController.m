@@ -7,6 +7,7 @@
 //
 
 #import "FlipsideViewController.h"
+#import "MainViewController.h"
 
 @interface FlipsideViewController ()
 
@@ -27,6 +28,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+	// Load settings
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	self.soundSwitch.on = [defaults boolForKey:kSoundKey];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,7 +44,25 @@
 
 - (IBAction)done:(id)sender
 {
+	// Save settings and write to disk
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setBool:self.soundSwitch.on forKey:kSoundKey];
+	[defaults synchronize];
+    
     [self.delegate flipsideViewControllerDidFinish:self];
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view
+	self.soundSwitch = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        return YES;
+    } else {
+        return (interfaceOrientation !=	UIInterfaceOrientationPortraitUpsideDown);
+    }
 }
 
 @end

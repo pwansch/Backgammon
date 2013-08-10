@@ -16,6 +16,16 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+	NSString *versionValue = [[NSUserDefaults standardUserDefaults] stringForKey:kVersionKey];
+	if (versionValue == nil)
+	{
+		NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+									 @"1.1",  kVersionKey,
+									 @"YES", kSoundKey, nil];
+		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController_iPhone" bundle:nil];
     } else {
