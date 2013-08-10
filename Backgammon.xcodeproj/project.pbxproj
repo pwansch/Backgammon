@@ -84,8 +84,8 @@
 		AF60092E179F704A00C2DA69 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		AF60092F179F704A00C2DA69 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		AF7743BA17B33EE700303E64 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		AF7F13BA17A0B92B005FBADA /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Algorithm.h; path = Backgammon/Algorithm.h; sourceTree = "<group>"; };
-		AF7F13BB17A0B92B005FBADA /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Algorithm.m; path = Backgammon/Algorithm.m; sourceTree = "<group>"; };
+		AF7F13BA17A0B92B005FBADA /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
+		AF7F13BB17A0B92B005FBADA /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Algorithm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AF07F17417B36CE100F1B359 /* WAV Files */ = {
+		AF07F17417B36CE100F1B359 /* Sound Files */ = {
 			isa = PBXGroup;
 			children = (
 				AF550F3717B6BB4700A930A5 /* bump.wav */,
@@ -118,13 +118,12 @@
 				AF550F4017B6BB4700A930A5 /* undo.wav */,
 				AF550F4117B6BB4700A930A5 /* won.wav */,
 			);
-			name = "WAV Files";
+			name = "Sound Files";
 			sourceTree = "<group>";
 		};
-		AF1E554117AF328600672E4F /* Resources */ = {
+		AF1D57AE17B6EB8100BCF482 /* Image Files */ = {
 			isa = PBXGroup;
 			children = (
-				AF07F17417B36CE100F1B359 /* WAV Files */,
 				AF1E553517AF324F00672E4F /* dice1.png */,
 				AF1E553617AF324F00672E4F /* dice2.png */,
 				AF1E553717AF324F00672E4F /* dice3.png */,
@@ -132,14 +131,21 @@
 				AF1E553917AF324F00672E4F /* dice5.png */,
 				AF1E553A17AF324F00672E4F /* dice6.png */,
 			);
+			name = "Image Files";
+			sourceTree = "<group>";
+		};
+		AF1E554117AF328600672E4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF07F17417B36CE100F1B359 /* Sound Files */,
+				AF1D57AE17B6EB8100BCF482 /* Image Files */,
+			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
 		AF6008F6179F6C0100C2DA69 = {
 			isa = PBXGroup;
 			children = (
-				AF7F13BA17A0B92B005FBADA /* Algorithm.h */,
-				AF7F13BB17A0B92B005FBADA /* Algorithm.m */,
 				AF600908179F6C0200C2DA69 /* Backgammon */,
 				AF1E554117AF328600672E4F /* Resources */,
 				AF600901179F6C0200C2DA69 /* Frameworks */,
@@ -169,6 +175,8 @@
 		AF600908179F6C0200C2DA69 /* Backgammon */ = {
 			isa = PBXGroup;
 			children = (
+				AF7F13BA17A0B92B005FBADA /* Algorithm.h */,
+				AF7F13BB17A0B92B005FBADA /* Algorithm.m */,
 				AF600911179F6C0200C2DA69 /* AppDelegate.h */,
 				AF600912179F6C0200C2DA69 /* AppDelegate.m */,
 				AF60091A179F6C0200C2DA69 /* MainViewController.h */,
