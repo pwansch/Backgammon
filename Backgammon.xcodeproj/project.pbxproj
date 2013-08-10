@@ -13,6 +13,17 @@
 		AF1E553E17AF324F00672E4F /* dice4.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553817AF324F00672E4F /* dice4.png */; };
 		AF1E553F17AF324F00672E4F /* dice5.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553917AF324F00672E4F /* dice5.png */; };
 		AF1E554017AF324F00672E4F /* dice6.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553A17AF324F00672E4F /* dice6.png */; };
+		AF550F4217B6BB4700A930A5 /* bump.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF550F3717B6BB4700A930A5 /* bump.wav */; };
+		AF550F4317B6BB4700A930A5 /* dice.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF550F3817B6BB4700A930A5 /* dice.wav */; };
+		AF550F4417B6BB4700A930A5 /* end.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF550F3917B6BB4700A930A5 /* end.wav */; };
+		AF550F4517B6BB4700A930A5 /* illegal.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF550F3A17B6BB4700A930A5 /* illegal.wav */; };
+		AF550F4617B6BB4700A930A5 /* lost.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF550F3B17B6BB4700A930A5 /* lost.wav */; };
+		AF550F4717B6BB4700A930A5 /* new.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF550F3C17B6BB4700A930A5 /* new.wav */; };
+		AF550F4817B6BB4700A930A5 /* pickup.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF550F3D17B6BB4700A930A5 /* pickup.wav */; };
+		AF550F4917B6BB4700A930A5 /* place.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF550F3E17B6BB4700A930A5 /* place.wav */; };
+		AF550F4A17B6BB4700A930A5 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF550F3F17B6BB4700A930A5 /* start.wav */; };
+		AF550F4B17B6BB4700A930A5 /* undo.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF550F4017B6BB4700A930A5 /* undo.wav */; };
+		AF550F4C17B6BB4700A930A5 /* won.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF550F4117B6BB4700A930A5 /* won.wav */; };
 		AF600903179F6C0200C2DA69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF600902179F6C0200C2DA69 /* UIKit.framework */; };
 		AF600905179F6C0200C2DA69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF600904179F6C0200C2DA69 /* Foundation.framework */; };
 		AF600907179F6C0200C2DA69 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF600906179F6C0200C2DA69 /* CoreGraphics.framework */; };
@@ -39,6 +50,17 @@
 		AF1E553817AF324F00672E4F /* dice4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice4.png; sourceTree = "<group>"; };
 		AF1E553917AF324F00672E4F /* dice5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice5.png; sourceTree = "<group>"; };
 		AF1E553A17AF324F00672E4F /* dice6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice6.png; sourceTree = "<group>"; };
+		AF550F3717B6BB4700A930A5 /* bump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bump.wav; sourceTree = "<group>"; };
+		AF550F3817B6BB4700A930A5 /* dice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dice.wav; sourceTree = "<group>"; };
+		AF550F3917B6BB4700A930A5 /* end.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = end.wav; sourceTree = "<group>"; };
+		AF550F3A17B6BB4700A930A5 /* illegal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = illegal.wav; sourceTree = "<group>"; };
+		AF550F3B17B6BB4700A930A5 /* lost.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lost.wav; sourceTree = "<group>"; };
+		AF550F3C17B6BB4700A930A5 /* new.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = new.wav; sourceTree = "<group>"; };
+		AF550F3D17B6BB4700A930A5 /* pickup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pickup.wav; sourceTree = "<group>"; };
+		AF550F3E17B6BB4700A930A5 /* place.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = place.wav; sourceTree = "<group>"; };
+		AF550F3F17B6BB4700A930A5 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
+		AF550F4017B6BB4700A930A5 /* undo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = undo.wav; sourceTree = "<group>"; };
+		AF550F4117B6BB4700A930A5 /* won.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = won.wav; sourceTree = "<group>"; };
 		AF6008FF179F6C0200C2DA69 /* Backgammon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Backgammon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF600902179F6C0200C2DA69 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AF600904179F6C0200C2DA69 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -84,6 +106,17 @@
 		AF07F17417B36CE100F1B359 /* WAV Files */ = {
 			isa = PBXGroup;
 			children = (
+				AF550F3717B6BB4700A930A5 /* bump.wav */,
+				AF550F3817B6BB4700A930A5 /* dice.wav */,
+				AF550F3917B6BB4700A930A5 /* end.wav */,
+				AF550F3A17B6BB4700A930A5 /* illegal.wav */,
+				AF550F3B17B6BB4700A930A5 /* lost.wav */,
+				AF550F3C17B6BB4700A930A5 /* new.wav */,
+				AF550F3D17B6BB4700A930A5 /* pickup.wav */,
+				AF550F3E17B6BB4700A930A5 /* place.wav */,
+				AF550F3F17B6BB4700A930A5 /* start.wav */,
+				AF550F4017B6BB4700A930A5 /* undo.wav */,
+				AF550F4117B6BB4700A930A5 /* won.wav */,
 			);
 			name = "WAV Files";
 			sourceTree = "<group>";
@@ -229,6 +262,17 @@
 				AF1E553E17AF324F00672E4F /* dice4.png in Resources */,
 				AF1E553F17AF324F00672E4F /* dice5.png in Resources */,
 				AF1E554017AF324F00672E4F /* dice6.png in Resources */,
+				AF550F4217B6BB4700A930A5 /* bump.wav in Resources */,
+				AF550F4317B6BB4700A930A5 /* dice.wav in Resources */,
+				AF550F4417B6BB4700A930A5 /* end.wav in Resources */,
+				AF550F4517B6BB4700A930A5 /* illegal.wav in Resources */,
+				AF550F4617B6BB4700A930A5 /* lost.wav in Resources */,
+				AF550F4717B6BB4700A930A5 /* new.wav in Resources */,
+				AF550F4817B6BB4700A930A5 /* pickup.wav in Resources */,
+				AF550F4917B6BB4700A930A5 /* place.wav in Resources */,
+				AF550F4A17B6BB4700A930A5 /* start.wav in Resources */,
+				AF550F4B17B6BB4700A930A5 /* undo.wav in Resources */,
+				AF550F4C17B6BB4700A930A5 /* won.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
