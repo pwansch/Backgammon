@@ -30,17 +30,6 @@
 		AF600930179F704A00C2DA69 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF60092F179F704A00C2DA69 /* MainView.m */; };
 		AF7743BB17B33EE700303E64 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF7743BA17B33EE700303E64 /* AudioToolbox.framework */; };
 		AF7F13BC17A0B92B005FBADA /* Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7F13BB17A0B92B005FBADA /* Algorithm.m */; };
-		AFDBD2C617B3E50B000B4780 /* bump.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2BB17B3E50B000B4780 /* bump.wav */; };
-		AFDBD2C717B3E50B000B4780 /* dice.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2BC17B3E50B000B4780 /* dice.wav */; };
-		AFDBD2C817B3E50B000B4780 /* end.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2BD17B3E50B000B4780 /* end.wav */; };
-		AFDBD2C917B3E50B000B4780 /* illegal.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2BE17B3E50B000B4780 /* illegal.wav */; };
-		AFDBD2CA17B3E50B000B4780 /* lost.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2BF17B3E50B000B4780 /* lost.wav */; };
-		AFDBD2CB17B3E50B000B4780 /* new.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C017B3E50B000B4780 /* new.wav */; };
-		AFDBD2CC17B3E50B000B4780 /* pickup.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C117B3E50B000B4780 /* pickup.wav */; };
-		AFDBD2CD17B3E50B000B4780 /* place.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C217B3E50B000B4780 /* place.wav */; };
-		AFDBD2CE17B3E50B000B4780 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C317B3E50B000B4780 /* start.wav */; };
-		AFDBD2CF17B3E50B000B4780 /* undo.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C417B3E50B000B4780 /* undo.wav */; };
-		AFDBD2D017B3E50B000B4780 /* won.wav in Resources */ = {isa = PBXBuildFile; fileRef = AFDBD2C517B3E50B000B4780 /* won.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,17 +64,6 @@
 		AF7743BA17B33EE700303E64 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		AF7F13BA17A0B92B005FBADA /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Algorithm.h; path = Backgammon/Algorithm.h; sourceTree = "<group>"; };
 		AF7F13BB17A0B92B005FBADA /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Algorithm.m; path = Backgammon/Algorithm.m; sourceTree = "<group>"; };
-		AFDBD2BB17B3E50B000B4780 /* bump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bump.wav; sourceTree = "<group>"; };
-		AFDBD2BC17B3E50B000B4780 /* dice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dice.wav; sourceTree = "<group>"; };
-		AFDBD2BD17B3E50B000B4780 /* end.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = end.wav; sourceTree = "<group>"; };
-		AFDBD2BE17B3E50B000B4780 /* illegal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = illegal.wav; sourceTree = "<group>"; };
-		AFDBD2BF17B3E50B000B4780 /* lost.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lost.wav; sourceTree = "<group>"; };
-		AFDBD2C017B3E50B000B4780 /* new.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = new.wav; sourceTree = "<group>"; };
-		AFDBD2C117B3E50B000B4780 /* pickup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pickup.wav; sourceTree = "<group>"; };
-		AFDBD2C217B3E50B000B4780 /* place.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = place.wav; sourceTree = "<group>"; };
-		AFDBD2C317B3E50B000B4780 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
-		AFDBD2C417B3E50B000B4780 /* undo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = undo.wav; sourceTree = "<group>"; };
-		AFDBD2C517B3E50B000B4780 /* won.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = won.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,17 +84,6 @@
 		AF07F17417B36CE100F1B359 /* WAV Files */ = {
 			isa = PBXGroup;
 			children = (
-				AFDBD2BB17B3E50B000B4780 /* bump.wav */,
-				AFDBD2BC17B3E50B000B4780 /* dice.wav */,
-				AFDBD2BD17B3E50B000B4780 /* end.wav */,
-				AFDBD2BE17B3E50B000B4780 /* illegal.wav */,
-				AFDBD2BF17B3E50B000B4780 /* lost.wav */,
-				AFDBD2C017B3E50B000B4780 /* new.wav */,
-				AFDBD2C117B3E50B000B4780 /* pickup.wav */,
-				AFDBD2C217B3E50B000B4780 /* place.wav */,
-				AFDBD2C317B3E50B000B4780 /* start.wav */,
-				AFDBD2C417B3E50B000B4780 /* undo.wav */,
-				AFDBD2C517B3E50B000B4780 /* won.wav */,
 			);
 			name = "WAV Files";
 			sourceTree = "<group>";
@@ -262,17 +229,6 @@
 				AF1E553E17AF324F00672E4F /* dice4.png in Resources */,
 				AF1E553F17AF324F00672E4F /* dice5.png in Resources */,
 				AF1E554017AF324F00672E4F /* dice6.png in Resources */,
-				AFDBD2C617B3E50B000B4780 /* bump.wav in Resources */,
-				AFDBD2C717B3E50B000B4780 /* dice.wav in Resources */,
-				AFDBD2C817B3E50B000B4780 /* end.wav in Resources */,
-				AFDBD2C917B3E50B000B4780 /* illegal.wav in Resources */,
-				AFDBD2CA17B3E50B000B4780 /* lost.wav in Resources */,
-				AFDBD2CB17B3E50B000B4780 /* new.wav in Resources */,
-				AFDBD2CC17B3E50B000B4780 /* pickup.wav in Resources */,
-				AFDBD2CD17B3E50B000B4780 /* place.wav in Resources */,
-				AFDBD2CE17B3E50B000B4780 /* start.wav in Resources */,
-				AFDBD2CF17B3E50B000B4780 /* undo.wav in Resources */,
-				AFDBD2D017B3E50B000B4780 /* won.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
