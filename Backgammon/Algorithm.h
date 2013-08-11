@@ -19,6 +19,8 @@ typedef struct _BOARD
     unsigned short usNo[NOINDEXES];
 } BOARD;
 
+typedef BOARD *PBOARD;
+
 // Function prototypes
 BOOL fIsComputerAlmostFinish(BOARD board);
 short sGetComputerOnes(BOARD board);

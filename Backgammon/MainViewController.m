@@ -27,12 +27,27 @@
 @synthesize undoId;
 @synthesize wonId;
 @synthesize m_sound;
+@synthesize usScoreComputer;
+@synthesize usScorePlayer;
+@synthesize sFast;
+@synthesize fGameOver;
+@synthesize fStart;
+@synthesize fDice;
+@synthesize fGrabbed;
+@synthesize fUndo;
+@synthesize usDice1Old;
+@synthesize usDice2Old;
+@synthesize fPlayer;
+@synthesize fWait;
+@synthesize boardUndo;
+@synthesize sMoves;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
     // Initialize the randomizer
+    srandom(time(NULL));
     
     // Create system sounds
     NSString *path = [[NSBundle mainBundle] pathForResource:@"bump" ofType:@"wav"];
@@ -61,6 +76,9 @@
     // Initialize settings
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.m_sound = [defaults boolForKey:kSoundKey];
+    self.usScoreComputer = [defaults integerForKey:kScoreComputerKey];
+    self.usScorePlayer = [defaults integerForKey:kScorePlayerKey];
+    self.sFast = [defaults integerForKey:kFastKey];
     
     // Initialize variables
     [self initializeGame];
@@ -72,7 +90,10 @@
 {
 	// Save the settings
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	self.m_sound = [defaults boolForKey:kSoundKey];
+    self.m_sound = [defaults boolForKey:kSoundKey];
+    self.usScoreComputer = [defaults integerForKey:kScoreComputerKey];
+    self.usScorePlayer = [defaults integerForKey:kScorePlayerKey];
+    self.sFast = [defaults integerForKey:kFastKey];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -98,7 +119,7 @@
         if ([self.flipsidePopoverController isPopoverVisible]) {
             [self.flipsidePopoverController dismissPopoverAnimated:YES];
         } else {
-            [self.flipsidePopoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            [self.flipsidePopoverController presentPopoverFromRect:[sender bounds] inView:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         }
     }
 }
@@ -145,6 +166,19 @@
 	[self playSound:newId];
     
 	// Initialize the game
+    self.fGameOver = NO;
+	mainView.usDice1 = 1;
+	mainView.usDice2 = 1;
+	self.fStart = YES;
+	self.fDice = YES;
+	self.fGrabbed = NO;
+	self.fUndo = NO;
+	self.usDice1Old = mainView.usDice1;
+	self.usDice2Old = mainView.usDice2;
+	self.fPlayer = YES;
+	self.fWait = NO;
+    
+    // Initialize board
     BOARD boardHilf;
     for (int i = 0; i < NOINDEXES; i++) {
         boardHilf.usNo[i] = 0;
@@ -168,50 +202,60 @@
     boardHilf.fWho[25] = PLAYER;
     boardHilf.usNo[25] = 2;
     mainView.board = boardHilf;
+    self.boardUndo = boardHilf;
     
+    // Set the text
+    mainView.fDrawText = YES;
+    mainView.text = [[NSString alloc] initWithFormat: @"Tap the dice to roll them."];
     
-/*
-	// Play the new game sound
-	[self playSound:newId];
-	
-	// Initialize the game
-    BOARD boardHilf;
-	self.gameover = NO;
-	for(short sX = 0; sX < DIVISIONS; sX++)
-		for(short sY = 0; sY < DIVISIONS; sY++)
-			boardHilf.sField[sX][sY] = EMPTY;
-	boardHilf.sField[3][3] = PLAYER;
-	boardHilf.sField[4][4] = PLAYER;
-	boardHilf.sField[3][4] = COMPUTER;
-	boardHilf.sField[4][3] = COMPUTER;
-    mainView.board = boardHilf;
- 
-	// If the player starts, make a move
-	mainView.fDisplayText = YES;
-	if(!self.m_fPlayerStarts)
-	{
-		mainView.statusText = [[NSString alloc] initWithFormat: @""];
-		
-		// Computer macht einen zug
-        BOARD boardThreadHilf;
-		ThreadInfo *threadInfo = [ThreadInfo alloc];
-		CopyBoard(mainView.board, &boardThreadHilf);
-        threadInfo.board = boardThreadHilf;
-		threadInfo.pass = NO;
-		threadInfo.hint = NO;
-		threadInfo.level = self.m_level;
-		self.threadRunning = YES;
-		if (self.m_level > 0) {
-			[self.activityIndicator startAnimating];
-		}
-		[self computeThread:threadInfo];
-	}
-	else {
-		mainView.statusText = [[NSString alloc] initWithFormat: @"You play blue."];
-	}
-*/	
 	// Draw the view
 	[mainView setNeedsDisplay];
+}
+
+- (IBAction)undo:(id)sender {
+    if(!self.fGameOver && self.fUndo) {
+        MainView *mainView = (MainView *)self.view;
+        
+        // Play the undo game sound
+        [self playSound:undoId];
+        
+        for (int i = 0; i < NOINDEXES; i++) {
+            if ((mainView.board.usNo[i] != self.boardUndo.usNo[i]) || (mainView.board.fWho[i] != self.boardUndo.fWho[i])) {
+                PBOARD pBoard = [mainView getBoardPointer];
+                pBoard->fWho[i] = self.boardUndo.fWho[i];
+                pBoard->usNo[i] = self.boardUndo.usNo[i];
+                [mainView invalidateIndex:i];
+            }
+        }
+        
+        mainView.usDice1 = self.usDice1Old;
+        mainView.usDice2 = self.usDice2Old;
+        self.fDice = NO;
+        self.fUndo = NO;
+        self.fPlayer = YES;
+        
+        // Invalidate dice
+        [mainView invalidateDice];
+        
+        if (mainView.usDice1 == mainView.usDice2)
+        {
+            self.sMoves = 4;
+            for (int i = 0; i < 4; i++)
+                asDice[i] = mainView.usDice1;
+        }
+        else
+        {
+            self.sMoves = 2;
+            asDice[0] = mainView.usDice1;
+            asDice[1] = mainView.usDice2;
+            asDice[2] = - 1;
+            asDice[3] = - 1;
+        }
+    }
+    else {
+        // Unable to show undo
+        [self playSound:illegalId];
+    }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

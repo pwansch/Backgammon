@@ -16,14 +16,13 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS);
 
 @implementation MainView
 
-@synthesize fGameOver;
-@synthesize m_started;
 @synthesize usScorePlayer;
 @synthesize usScoreComputer;
 @synthesize usDice1;
 @synthesize usDice2;
 @synthesize board;
 @synthesize text;
+@synthesize fDrawText;
 @synthesize hbm1;
 @synthesize hbm2;
 @synthesize hbm3;
@@ -35,12 +34,11 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS);
 	if ((self = [super initWithCoder:coder]))
 	{
 		// Initialize variables
-        self.fGameOver = YES;
-        self.m_started = YES;
         self.usScorePlayer = 0;
         self.usScoreComputer = 0;
         self.usDice1 = 1;
         self.usDice2 = 1;
+        self.fDrawText = NO;
         
         // Load images
         self.hbm1 = [UIImage imageNamed:@"dice1.png"];
@@ -451,7 +449,7 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
         }
         
         // Ausgabetext zeichnen
-        if (self.fGameOver || !self.m_started) {
+        if (self.fDrawText) {
             // Draw text
             UIFont *font = [UIFont systemFontOfSize:20];
             rectPaint = CGRectMake(ptlOffset.x, (ptlOffset.y + NOPOINTS - font.pointSize) / 2 - 4, NOPOINTS * (DIVISIONSX + 2), font.pointSize);
@@ -500,6 +498,60 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
         x = DIVISIONSX + 1;
     y = (DIVISIONSY + 1) - y;
     return sGetIdx[x][y];
+}
+
+- (void)invalidateIndex:(short)index {
+    // Calculate index
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
+    CGRect rGetRectl[NOINDEXES] = {
+        {ptlOffset.x + 7 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 14 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 13 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 12 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 11 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 10 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 9 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 8 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 6 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 5 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 4 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 3 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 2 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 2 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 3 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 4 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 5 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 6 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 8 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 9 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 10 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 11 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 12 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 13 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 14 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
+        {ptlOffset.x + 7 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS}};
+   	if (index >= 0 && index < NOINDEXES) {
+        [self setNeedsDisplayInRect:rGetRectl[index]];
+    }
+}
+
+- (void)invalidateDice {
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
+    CGPoint ptl;
+    ptl.x = (ptlOffset.x + NOPOINTS + (6 * NOPOINTS - (self.hbm1.size.width * 2.5)) / 2);
+    ptl.y = (ptlOffset.y + 6 * NOPOINTS + ((2 * NOPOINTS - self.hbm1.size.height) / 2));
+    CGRect rectUpdate = CGRectMake(ptl.x, ptl.y, self.hbm1.size.width, self.hbm1.size.height);
+    [self setNeedsDisplayInRect:rectUpdate];
+    rectUpdate = CGRectMake(ptl.x + (self.hbm1.size.width * 1.5), ptl.y, self.hbm1.size.width, self.hbm1.size.height);
+    [self setNeedsDisplayInRect:rectUpdate];
+}
+
+- (PBOARD)getBoardPointer {
+    return &board;
 }
 
 @end

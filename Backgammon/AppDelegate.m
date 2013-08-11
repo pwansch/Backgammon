@@ -21,7 +21,10 @@
 	{
 		NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
 									 @"1.1",  kVersionKey,
-									 @"YES", kSoundKey, nil];
+									 @"YES", kSoundKey,
+									 @"0", kScoreComputerKey,
+									 @"0", kScorePlayerKey,
+									 @"0", kFastKey, nil];
 		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
