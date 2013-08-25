@@ -31,6 +31,7 @@
     
 	// Load settings
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.animationSwitch.on = [defaults boolForKey:kAnimationKey];
 	self.soundSwitch.on = [defaults boolForKey:kSoundKey];
 }
 
@@ -46,6 +47,7 @@
 {
 	// Save settings and write to disk
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:self.animationSwitch.on forKey:kAnimationKey];
 	[defaults setBool:self.soundSwitch.on forKey:kSoundKey];
 	[defaults synchronize];
     
@@ -54,6 +56,7 @@
 
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view
+    self.animationSwitch = nil;
 	self.soundSwitch = nil;
 }
 

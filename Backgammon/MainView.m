@@ -8,7 +8,7 @@
 
 #import "MainView.h"
 #import "Algorithm.h"
-
+int counterxx = 0;
 @interface MainView ()
 // Class extensions and utility functions
 CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS);
@@ -22,6 +22,7 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS);
 @synthesize usDice2;
 @synthesize board;
 @synthesize text;
+@synthesize animationLock;
 @synthesize fDrawText;
 @synthesize hbm1;
 @synthesize hbm2;
@@ -29,6 +30,10 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS);
 @synthesize hbm4;
 @synthesize hbm5;
 @synthesize hbm6;
+@synthesize grabbedStone;
+@synthesize animatedDice1;
+@synthesize animatedDice2;
+@synthesize mainViewController;
 
 - (id)initWithCoder:(NSCoder *)coder {
 	if ((self = [super initWithCoder:coder]))
@@ -39,6 +44,7 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS);
         self.usDice1 = 1;
         self.usDice2 = 1;
         self.fDrawText = NO;
+        self.isAnimating = NO;
         
         // Load images
         self.hbm1 = [UIImage imageNamed:@"dice1.png"];
@@ -47,7 +53,10 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS);
         self.hbm4 = [UIImage imageNamed:@"dice4.png"];
         self.hbm5 = [UIImage imageNamed:@"dice5.png"];
         self.hbm6 = [UIImage imageNamed:@"dice6.png"];
-		
+        self.grabbedStone = [[StoneView alloc] initWithFrame:[self rectCalc:0:0]:PLAYER];
+        self.grabbedStone.hidden = YES;
+        [self addSubview:grabbedStone];
+        
         // Keep the background transparent
 	}
     return self;
@@ -111,7 +120,7 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     rectPaint = CGRectMake(ptlOffset.x + NOPOINTS, ptlOffset.y + ulConvertY((DIVISIONSY + 1) * NOPOINTS + 1, NOPOINTS), 6 * NOPOINTS + 2, DIVISIONSY * NOPOINTS + 1);
     rectIntersect = CGRectIntersection(rectPaint, rect);
     if (!CGRectIsNull(rectIntersect)) {
-        CGContextAddRect(context, rectIntersect);
+        CGContextAddRect(context, rectPaint);
         CGContextDrawPath(context, kCGPathFillStroke);
     }
         
@@ -120,7 +129,7 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     rectPaint.size.width = NOPOINTS;
     rectIntersect = CGRectIntersection(rectPaint, rect);
     if (!CGRectIsNull(rectIntersect)) {
-        CGContextAddRect(context, rectIntersect);
+        CGContextAddRect(context, rectPaint);
         CGContextDrawPath(context, kCGPathFillStroke);
     }
         
@@ -129,7 +138,7 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     rectPaint.size.width = 6 * NOPOINTS + 2;
     rectIntersect = CGRectIntersection(rectPaint, rect);
     if (!CGRectIsNull(rectIntersect)) {
-        CGContextAddRect(context, rectIntersect);
+        CGContextAddRect(context, rectPaint);
         CGContextDrawPath(context, kCGPathFillStroke);
     }
         
@@ -138,9 +147,9 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     rectPaint.size.width = NOPOINTS + 1;
     rectIntersect = CGRectIntersection(rectPaint, rect);
     if (!CGRectIsNull(rectIntersect)) {
-        CGContextAddRect(context, rectIntersect);
+        CGContextAddRect(context, rectPaint);
         CGContextDrawPath(context, kCGPathFillStroke);
-    }
+    } 
         
 	// Draw scores player
     UIFont *font = [UIFont systemFontOfSize:20];
@@ -200,7 +209,7 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     // Draw shadows
     CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
         
-    // Draw lower shadow TODO: if portrait then dont add -1
+    // Draw lower shadow
     int shadowOffset = 1;
     if (ptlOffset.x < ptlOffset.y) {
        shadowOffset=0;
@@ -217,7 +226,7 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     if (CGRectIntersectsRect(rectPaint, rect)) {
         CGContextAddRect(context, rectPaint);
         CGContextDrawPath(context, kCGPathFill);
-    }
+    } 
     
 	// Dreiecke werden gezeichnet
     CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
@@ -270,7 +279,7 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
             CGContextDrawPath(context, kCGPathFillStroke);
         }
     }
-        
+      
     // Links unten
     rectPaint = CGRectMake(ptlOffset.x, ptlOffset.y + ulConvertY(6 * NOPOINTS, NOPOINTS), NOPOINTS + 1, 5 * NOPOINTS);
     for (int i = 0; i < 6; i++) {
@@ -402,11 +411,11 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
                 CGContextAddEllipseInRect(context, rectStone);
                 CGContextDrawPath(context, kCGPathFillStroke);
 				if (j == 4 || j == 13) {
-					ptl.y = rectPaint.origin.y - NOPOINTS / 2 + 4;
+					ptl.y = rectPaint.origin.y + rectPaint.size.height + 4 - NOPOINTS / 2 + 4;
 					continue;
 				}
 				if (j == 8) {
-					ptl.y = rectPaint.origin.y + 4;
+					ptl.y = rectPaint.origin.y + rectPaint.size.height + 4;
 					continue;
 				}
 				ptl.y -= NOPOINTS;
@@ -424,12 +433,12 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
             ptl.x = rectPaint.origin.x;
             ptl.y = rectPaint.origin.y;
             switch (self.usDice1) {
-                case 1: [hbm1 drawAtPoint:ptl]; break;
-                case 2: [hbm2 drawAtPoint:ptl]; break;
-                case 3: [hbm3 drawAtPoint:ptl]; break;
-                case 4: [hbm4 drawAtPoint:ptl]; break;
-                case 5: [hbm5 drawAtPoint:ptl]; break;
-                case 6: [hbm6 drawAtPoint:ptl]; break;
+                case 1: [self.hbm1 drawAtPoint:ptl]; break;
+                case 2: [self.hbm2 drawAtPoint:ptl]; break;
+                case 3: [self.hbm3 drawAtPoint:ptl]; break;
+                case 4: [self.hbm4 drawAtPoint:ptl]; break;
+                case 5: [self.hbm5 drawAtPoint:ptl]; break;
+                case 6: [self.hbm6 drawAtPoint:ptl]; break;
             }
         }
             
@@ -439,12 +448,12 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
             ptl.x = rectPaint.origin.x;
             ptl.y = rectPaint.origin.y;
             switch (self.usDice2) {
-                case 1: [hbm1 drawAtPoint:ptl]; break;
-                case 2: [hbm2 drawAtPoint:ptl]; break;
-                case 3: [hbm3 drawAtPoint:ptl]; break;
-                case 4: [hbm4 drawAtPoint:ptl]; break;
-                case 5: [hbm5 drawAtPoint:ptl]; break;
-                case 6: [hbm6 drawAtPoint:ptl]; break;
+                case 1: [self.hbm1 drawAtPoint:ptl]; break;
+                case 2: [self.hbm2 drawAtPoint:ptl]; break;
+                case 3: [self.hbm3 drawAtPoint:ptl]; break;
+                case 4: [self.hbm4 drawAtPoint:ptl]; break;
+                case 5: [self.hbm5 drawAtPoint:ptl]; break;
+                case 6: [self.hbm6 drawAtPoint:ptl]; break;
             }
         }
         
@@ -500,42 +509,130 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     return sGetIdx[x][y];
 }
 
+- (BOOL)touchDice:(NSSet *)touches {
+    // Get touch position
+	UITouch *touch = [touches anyObject];
+	CGPoint point = [touch locationInView:self];
+    
+    // Calculate index
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
+    CGPoint ptl;
+    ptl.x = (ptlOffset.x + NOPOINTS + (6 * NOPOINTS - (self.hbm1.size.width * 2.5)) / 2);
+    ptl.y = (ptlOffset.y + 6 * NOPOINTS + ((2 * NOPOINTS - self.hbm1.size.height) / 2));
+    CGRect rectDice1 = CGRectMake(ptl.x, ptl.y, self.hbm1.size.width, self.hbm1.size.height);
+    CGRect rectDice2 = CGRectMake(ptl.x + (self.hbm1.size.width * 1.5), ptl.y, self.hbm1.size.width, self.hbm1.size.height);
+    return (CGRectContainsPoint(rectDice1, point) || CGRectContainsPoint(rectDice2, point));
+}
+
 - (void)invalidateIndex:(short)index {
     // Calculate index
     CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
     CGRect rGetRectl[NOINDEXES] = {
-        {ptlOffset.x + 7 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 14 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 13 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 12 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 11 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 10 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 9 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 8 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 6 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 5 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 4 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 3 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 2 * NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + NOPOINTS + 1, ptlOffset.y + 8 * NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 2 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 3 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 4 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 5 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 6 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 8 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 9 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 10 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 11 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 12 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 13 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 14 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS},
-        {ptlOffset.x + 7 * NOPOINTS + 1, ptlOffset.y + NOPOINTS, NOPOINTS + 1, 5 * NOPOINTS}};
+        {ptlOffset.x + 7 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 14 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 13 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 12 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 11 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 10 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 9 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 8 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 6 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 5 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 4 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 3 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 2 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 2 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 3 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 4 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 5 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 6 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 8 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 9 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 10 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 11 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 12 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 13 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 14 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
+        {ptlOffset.x + 7 * NOPOINTS, ptlOffset.y + NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1}};
    	if (index >= 0 && index < NOINDEXES) {
         [self setNeedsDisplayInRect:rGetRectl[index]];
     }
+}
+
+- (CGRect)rectCalc:(short)index :(short)taken {
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
+    CGRect rGetRectl[NOINDEXES] = {
+        {ptlOffset.x + 3 + 7 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 4 + 14 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 13 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 12 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 11 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 10 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 9 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 8 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 6 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 5 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 4 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 3 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 2 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 2 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 3 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 4 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 5 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 6 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 8 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 9 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 10 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 11 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 12 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 13 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 4 + 14 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
+        {ptlOffset.x + 3 + 7 * NOPOINTS, ptlOffset.y + NOPOINTS, NOPOINTS - 2, NOPOINTS - 2}};
+
+    CGRect rect = rGetRectl[index];
+    if (index < 14) {
+        // untere Haelfte
+        if ((self.board.usNo[index] + taken) < 6)
+            rect.origin.y += (5 - (self.board.usNo[index] + taken)) * NOPOINTS;
+        else
+        {
+            if ((self.board.usNo[index] + taken) > 5 && (self.board.usNo[index] + taken) < 10)
+                rect.origin.y += (9 - (self.board.usNo[index] + taken)) * NOPOINTS + NOPOINTS / 2 + 4;
+            else
+            {
+                if ((self.board.usNo[index] + taken) > 9 && (self.board.usNo[index] + taken) < 15)
+                    rect.origin.y += (14 - (self.board.usNo[index] + taken)) * NOPOINTS;
+                else
+                    rect.origin.y += (18 - (self.board.usNo[index] + taken)) * NOPOINTS + NOPOINTS / 2 + 4;
+            }
+        }
+    }
+    else
+    {
+        // obere Haelfte
+        if ((self.board.usNo[index] + taken) < 6)
+            rect.origin.y += ((self.board.usNo[index] + taken) - 1) * NOPOINTS;
+        else
+        {
+            if ((self.board.usNo[index] + taken) > 5 && (self.board.usNo[index] + taken) < 10)
+                rect.origin.y += ((self.board.usNo[index] + taken) - 6) * NOPOINTS + NOPOINTS / 2;
+            else
+            {
+                if ((self.board.usNo[index] + taken) > 9 && (self.board.usNo[index] + taken) < 15)
+                    rect.origin.y += ((self.board.usNo[index] + taken) - 10) * NOPOINTS;
+                else
+                    rect.origin.y += ((self.board.usNo[index] + taken) - 14) * NOPOINTS + NOPOINTS / 2;
+            }
+        }
+    }
+    return rect;
 }
 
 - (void)invalidateDice {
@@ -550,8 +647,169 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     [self setNeedsDisplayInRect:rectUpdate];
 }
 
+- (void)animateDice {
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
+    CGPoint ptl;
+    ptl.x = (ptlOffset.x + NOPOINTS + (6 * NOPOINTS - (self.hbm1.size.width * 2.5)) / 2);
+    ptl.y = (ptlOffset.y + 6 * NOPOINTS + ((2 * NOPOINTS - self.hbm1.size.height) / 2));
+    CGRect rectDice1 = CGRectMake(ptl.x, ptl.y, self.hbm1.size.width, self.hbm1.size.height);
+    CGRect rectDice2 = CGRectMake(ptl.x + (self.hbm1.size.width * 1.5), ptl.y, self.hbm1.size.width, self.hbm1.size.height);
+    
+    // Set up the image views
+    self.animatedDice1 = [[UIImageView alloc] initWithFrame:rectDice1];
+    self.animatedDice2 = [[UIImageView alloc] initWithFrame:rectDice2];
+    
+    // Load the images into an array
+    NSMutableArray *imageArray1 = [[NSMutableArray alloc] initWithCapacity:10];
+    NSMutableArray *imageArray2 = [[NSMutableArray alloc] initWithCapacity:10];
+    for (int i = 0; i < 10; i++) {
+        switch (1 + (abs(random() % 6))) {
+            case 1: [imageArray1 addObject:hbm1]; break;
+            case 2: [imageArray1 addObject:hbm2]; break;
+            case 3: [imageArray1 addObject:hbm3]; break;
+            case 4: [imageArray1 addObject:hbm4]; break;
+            case 5: [imageArray1 addObject:hbm5]; break;
+            case 6: [imageArray1 addObject:hbm6]; break;
+        }
+        switch (1 + (abs(random() % 6))) {
+            case 1: [imageArray2 addObject:hbm1]; break;
+            case 2: [imageArray2 addObject:hbm2]; break;
+            case 3: [imageArray2 addObject:hbm3]; break;
+            case 4: [imageArray2 addObject:hbm4]; break;
+            case 5: [imageArray2 addObject:hbm5]; break;
+            case 6: [imageArray2 addObject:hbm6]; break;
+        }
+    }
+    
+    // Animate and remove the view
+    self.animatedDice1.animationImages = imageArray1;
+    self.animatedDice1.animationDuration = 1;
+    self.animatedDice1.animationRepeatCount = 1;
+    self.animatedDice2.animationImages = imageArray2;
+    self.animatedDice2.animationDuration = 1;
+    self.animatedDice2.animationRepeatCount = 1;
+    [self addSubview:self.animatedDice1];
+    [self addSubview:self.animatedDice2];
+    [self.animatedDice1 startAnimating];
+    [self.animatedDice2 startAnimating];
+}
+
+- (void)stopAnimateDice {
+    [self.animatedDice1 stopAnimating];
+    [self.animatedDice2 stopAnimating];
+    [self.animatedDice1 removeFromSuperview];
+    [self.animatedDice2 removeFromSuperview];
+    self.animatedDice1 = nil;
+    self.animatedDice2 = nil;
+}
+
+- (void)invalidateText {
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
+    UIFont *font = [UIFont systemFontOfSize:20];
+    CGRect rectUpdate = CGRectMake(ptlOffset.x, (ptlOffset.y + NOPOINTS - font.pointSize) / 2 - 8, NOPOINTS * (DIVISIONSX + 2), font.pointSize + 8);
+    [self setNeedsDisplayInRect:rectUpdate];
+}
+
+- (void)invalidateScore {
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
+    UIFont *font = [UIFont systemFontOfSize:20];
+    CGRect rectUpdate = CGRectMake(ptlOffset.x + 8 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize + 8);
+    [self setNeedsDisplayInRect:rectUpdate];
+    rectUpdate = CGRectMake(ptlOffset.x + 11 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize + 8);
+    [self setNeedsDisplayInRect:rectUpdate];
+}
+
 - (PBOARD)getBoardPointer {
     return &board;
+}
+
+- (void)draw:(unsigned short) usFromIndex :(unsigned short) usToIndex :(BOOL)usToWho :(BOOL) fUpdateBar :(BOOL) fAnimation{
+    [self.animationLock lock];
+    
+    while (self.isAnimating) {
+        [self.animationLock wait];
+    }
+    self.isAnimating = YES;
+    /* Zuerst wird der alte Stein geloescht */
+    PBOARD pBoard = [self getBoardPointer];
+    if (pBoard->usNo[usFromIndex] > 0) {
+        pBoard->usNo[usFromIndex]--;
+    }
+    
+    if (fAnimation) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            
+            
+            [self invalidateIndex:usFromIndex];
+            
+            
+            
+            
+            StoneView *stoneView = [[StoneView alloc] initWithFrame:[self rectCalc:usFromIndex:1]:self.board.fWho[usFromIndex]];
+            [self addSubview:stoneView];
+            CGRect toRect = [self rectCalc:usToIndex:1];
+            [UIView animateWithDuration:0.5
+                                  delay:0
+                                options:UIViewAnimationOptionCurveLinear
+                             animations:^{ stoneView.frame = toRect; }
+                             completion:^(BOOL finished) {
+                                 [self.animationLock lock];
+                                pBoard->fWho[usToIndex] = usToWho;
+                                 
+                                 if (!fUpdateBar) {
+                                pBoard->usNo[usToIndex]++;
+                                 }
+                                [self invalidateIndex:usToIndex];
+                                if (fUpdateBar) {
+                                    pBoard->usNo[27]++;
+                                    [self invalidateIndex:27];
+                                    // Play bump sound
+                                    [mainViewController playSound:mainViewController.bumpId];
+                                    
+                                }
+                                [stoneView removeFromSuperview];
+                                self.isAnimating = NO;
+                                 [self.animationLock signal];
+                                 
+                             [self.animationLock unlock];
+                             }
+             ];
+            stoneView = nil;
+        });
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self invalidateIndex:usFromIndex];
+            [self.animationLock unlock];
+            pBoard->fWho[usToIndex] = usToWho;
+            if (!fUpdateBar) {
+            pBoard->usNo[usToIndex]++;
+            }
+            [self invalidateIndex:usToIndex];
+
+            /* muss ich den Spielerbalken aktualisieren ? */
+            if (fUpdateBar) {
+                pBoard->usNo[27]++;
+                [self invalidateIndex:27];
+                // Play bump sound
+                [mainViewController playSound:mainViewController.bumpId];
+
+            }
+            // Reset animating
+            self.isAnimating = NO;
+            [self.animationLock signal];
+            [self.animationLock unlock];
+        });
+    }
+    
+    while (self.isAnimating) {
+        [self.animationLock wait];
+    }
+    
+    
+    [self.animationLock unlock];
 }
 
 @end

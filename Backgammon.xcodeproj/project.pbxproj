@@ -41,6 +41,7 @@
 		AF600930179F704A00C2DA69 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF60092F179F704A00C2DA69 /* MainView.m */; };
 		AF7743BB17B33EE700303E64 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF7743BA17B33EE700303E64 /* AudioToolbox.framework */; };
 		AF7F13BC17A0B92B005FBADA /* Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7F13BB17A0B92B005FBADA /* Algorithm.m */; };
+		AFD3976717C16F5F0068E2A8 /* StoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD3976617C16F5F0068E2A8 /* StoneView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,8 @@
 		AF7743BA17B33EE700303E64 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		AF7F13BA17A0B92B005FBADA /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
 		AF7F13BB17A0B92B005FBADA /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Algorithm.m; sourceTree = "<group>"; };
+		AFD3976517C16F5F0068E2A8 /* StoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneView.h; sourceTree = "<group>"; };
+		AFD3976617C16F5F0068E2A8 /* StoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,8 @@
 				AF600920179F6C0200C2DA69 /* MainViewController_iPhone.xib */,
 				AF60092E179F704A00C2DA69 /* MainView.h */,
 				AF60092F179F704A00C2DA69 /* MainView.m */,
+				AFD3976517C16F5F0068E2A8 /* StoneView.h */,
+				AFD3976617C16F5F0068E2A8 /* StoneView.m */,
 				AF600923179F6C0200C2DA69 /* MainViewController_iPad.xib */,
 				AF600926179F6C0200C2DA69 /* FlipsideViewController.xib */,
 				AF600909179F6C0200C2DA69 /* Supporting Files */,
@@ -297,6 +302,7 @@
 				AF60091F179F6C0200C2DA69 /* FlipsideViewController.m in Sources */,
 				AF600930179F704A00C2DA69 /* MainView.m in Sources */,
 				AF7F13BC17A0B92B005FBADA /* Algorithm.m in Sources */,
+				AFD3976717C16F5F0068E2A8 /* StoneView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

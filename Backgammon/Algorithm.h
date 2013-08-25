@@ -22,15 +22,10 @@ typedef struct _BOARD
 typedef BOARD *PBOARD;
 
 // Function prototypes
-BOOL fIsComputerAlmostFinish(BOARD board);
-short sGetComputerOnes(BOARD board);
-BOOL fCanComputerThrowOne(BOARD board);
-void Draw(unsigned short usFromIndex, unsigned short usToIndex, BOOL fUpdateBar);
-void CalcMoves();
-void RollDice();
-short sWhat(BOOL fWinner);
-void SortasDice();
-BOOL fIsPlayerMovePossibleHilf();
-BOOL fIsPlayerMovePossible();
 BOOL fIsFinish(BOOL fWho, BOARD board);
-BOOL fQueryDice(unsigned short sDist);
+BOOL fIsPlayerMovePossibleHilf(BOARD hilfBoard, short asDiceHilf[4]);
+BOOL fIsPlayerMovePossible(BOARD board, short asDice[4]);
+short sWhat(BOARD board, BOOL fWinner);
+BOOL fCanComputerThrowOne(BOARD board);
+short sGetComputerOnes(BOARD board);
+BOOL fIsComputerAlmostFinish(BOARD board);

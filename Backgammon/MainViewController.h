@@ -11,45 +11,49 @@
 #import "Algorithm.h"
 
 #define kVersionKey			@"version"
+#define kAnimationKey       @"animation"
 #define kSoundKey			@"sound"
 #define kScoreComputerKey	@"scoreComputer"
 #define kScorePlayerKey     @"scorePlayer"
-#define kFastKey            @"fast"
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate>
 
+@property (strong, nonatomic) IBOutlet UIButton *gameButton;
+@property (strong, nonatomic) IBOutlet UIButton *undoButton;
+@property (strong, nonatomic) IBOutlet UIButton *infoButton;
 @property (strong, nonatomic) UIPopoverController *flipsidePopoverController;
-@property (assign, nonatomic) SystemSoundID bumpId;
-@property (assign, nonatomic) SystemSoundID diceId;
-@property (assign, nonatomic) SystemSoundID endId;
-@property (assign, nonatomic) SystemSoundID illegalId;
-@property (assign, nonatomic) SystemSoundID lostId;
-@property (assign, nonatomic) SystemSoundID newId;
-@property (assign, nonatomic) SystemSoundID pickupId;
-@property (assign, nonatomic) SystemSoundID placeId;
-@property (assign, nonatomic) SystemSoundID startId;
-@property (assign, nonatomic) SystemSoundID undoId;
-@property (assign, nonatomic) SystemSoundID wonId;
-@property (assign, nonatomic) BOOL m_sound;
-@property (assign, nonatomic) unsigned short usScoreComputer;
-@property (assign, nonatomic) unsigned short usScorePlayer;
-@property (assign, nonatomic) short sFast;
-@property (assign, nonatomic) BOOL fGameOver;
-@property (assign, nonatomic) BOOL fStart;
-@property (assign, nonatomic) BOOL fDice;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (assign, atomic) SystemSoundID bumpId;
+@property (assign, atomic) SystemSoundID diceId;
+@property (assign, atomic) SystemSoundID endId;
+@property (assign, atomic) SystemSoundID illegalId;
+@property (assign, atomic) SystemSoundID lostId;
+@property (assign, atomic) SystemSoundID newId;
+@property (assign, atomic) SystemSoundID pickupId;
+@property (assign, atomic) SystemSoundID placeId;
+@property (assign, atomic) SystemSoundID startId;
+@property (assign, atomic) SystemSoundID undoId;
+@property (assign, atomic) SystemSoundID wonId;
+@property (assign, atomic) BOOL m_sound;
+@property (assign, atomic) unsigned short usScoreComputer;
+@property (assign, atomic) unsigned short usScorePlayer;
+@property (assign, atomic) BOOL fAnimation;
+@property (assign, atomic) BOOL fGameOver;
+@property (assign, atomic) BOOL fStart;
+@property (assign, atomic) BOOL fDice;
 @property (assign, nonatomic) BOOL fGrabbed;
-@property (assign, nonatomic) BOOL fUndo;
-@property (assign, nonatomic) unsigned short usDice1Old;
-@property (assign, nonatomic) unsigned short usDice2Old;
-@property (assign, nonatomic) BOOL fPlayer;
-@property (assign, nonatomic) BOOL fWait;
-@property (assign, nonatomic) BOARD boardUndo;
-@property (assign, nonatomic) short sMoves;
+@property (assign, atomic) BOOL fUndo;
+@property (assign, atomic) unsigned short usDice1Old;
+@property (assign, atomic) unsigned short usDice2Old;
+@property (assign, atomic) BOOL fPlayer;
+@property (assign, atomic) BOOL fWait;
+@property (assign, atomic) BOARD boardUndo;
+@property (assign, atomic) short sMoves;
+@property (assign, nonatomic) short sGrabbedIdx;
 
 - (IBAction)showInfo:(id)sender;
 - (IBAction)newGame:(id)sender;
 - (void)playSound:(SystemSoundID)soundID;
-- (void)initializeGame;
 
 @end
 
