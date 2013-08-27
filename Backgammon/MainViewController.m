@@ -138,7 +138,18 @@
 }
 
 - (IBAction)newGame:(id)sender {
-	[self initializeGame];
+    if(!self.fGameOver) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Do you want to start a new game?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+        [actionSheet showInView:self.view];
+    } else {
+        [self initializeGame];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != [actionSheet cancelButtonIndex]) {
+        [self initializeGame];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -297,28 +308,45 @@
 	if (!self.fGameOver) {
         MainView *mainView = (MainView *)self.view;
         short index = [mainView getTouchIndex:touches];
+        short leftIndex = [mainView leftIndex:index];
+        short rightIndex = [mainView rightIndex:index];
         
         // Rollling the dice?
         if (self.fDice && [mainView touchDice:touches]) {
             [self RollDice];
         } else {
 		    // Darf der Stein denn weggenommen werden?
-		    if (self.fPlayer && !self.fDice && !self.fGrabbed && (index != -1) && (mainView.board.fWho[index] == PLAYER) && (mainView.board.usNo[index] > 0)) {
-                [mainView.animationLock lock];
-                while (mainView.isAnimating) {
-                    [mainView.animationLock wait];
+		    if (self.fPlayer && !self.fDice && !self.fGrabbed) {
+                if ((index != -1) && (mainView.board.fWho[index] == PLAYER) && (mainView.board.usNo[index] > 0)) {
+                    index = index;
+                } else if ((leftIndex != -1) && (mainView.board.fWho[leftIndex] == PLAYER) && (mainView.board.usNo[leftIndex] > 0)) {
+                    index = leftIndex;
+                } else if ((rightIndex != -1) && (mainView.board.fWho[rightIndex] == PLAYER) && (mainView.board.usNo[rightIndex] > 0)) {
+                    index = rightIndex;
+                } else {
+                    index = -1;
                 }
-                [self playSound:pickupId];
-			    // Take piece away
-			    self.fGrabbed = YES;
-			    self.sGrabbedIdx = index;
-                mainView.grabbedStone.frame = [mainView rectCalc:sGrabbedIdx:0];
-                mainView.grabbedStone.hidden = NO;
-                PBOARD pBoard = [mainView getBoardPointer];
-                pBoard->usNo[index]--;
-                [mainView invalidateIndex:index];
-                [mainView.animationLock unlock];
-		    }
+                
+                if (index != -1) {
+                    [mainView.animationLock lock];
+                    while (mainView.isAnimating) {
+                        [mainView.animationLock wait];
+                    }
+                    [self playSound:pickupId];
+                    // Take piece away
+                    self.fGrabbed = YES;
+                    self.sGrabbedIdx = index;
+                    mainView.grabbedStone.frame = [mainView rectCalc:sGrabbedIdx:0];
+                    mainView.grabbedStone.hidden = NO;
+                    PBOARD pBoard = [mainView getBoardPointer];
+                    pBoard->usNo[index]--;
+                    [mainView invalidateIndex:index];
+                    [mainView.animationLock unlock];
+                }
+                else {
+                    [self playSound:illegalId];
+                }
+            }
 		    else {
                 [self playSound:illegalId];
             }
@@ -374,13 +402,21 @@
         
 		// Stone is being dragged
         short index = [mainView getTouchIndex:touches];
+        short leftIndex = [mainView leftIndex:index];
+        short rightIndex = [mainView rightIndex:index];
         PBOARD pBoard = [mainView getBoardPointer];
-		self.fGrabbed = NO;
+        self.fGrabbed = NO;
         mainView.grabbedStone.hidden = YES;
-		BOOL fBalken = NO;
-		BOOL fWarn = NO;
-        BOOL fValid = NO;
-        BOOL fValidPlayer = NO;
+		BOOL fBalken;
+		BOOL fWarn;
+        BOOL fValid;
+        BOOL fValidPlayer;
+        
+    left_or_right:
+		fBalken = NO;
+		fWarn = NO;
+        fValid = NO;
+        fValidPlayer = NO;
         
         if (index != -1) {
 			// Platz ist unbesetzt
@@ -483,6 +519,15 @@
 		}
 		else
 		{
+            if (leftIndex != index) {
+                index = leftIndex;
+                goto left_or_right;
+            } else if (rightIndex != index) {
+                index = rightIndex;
+                leftIndex = index;
+                goto left_or_right;
+            }
+            
 			fWarn = YES;
             pBoard->usNo[sGrabbedIdx]++;
             [mainView.animationLock unlock];

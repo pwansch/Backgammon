@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF06CCA617CC5D79004DF8D4 /* backgammon-72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCA217CC5D79004DF8D4 /* backgammon-72x72.png */; };
+		AF06CCA717CC5D79004DF8D4 /* backgammon-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCA317CC5D79004DF8D4 /* backgammon-114x114.png */; };
+		AF06CCA817CC5D79004DF8D4 /* backgammon-144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCA417CC5D79004DF8D4 /* backgammon-144x144.png */; };
+		AF06CCA917CC5D79004DF8D4 /* backgammon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCA517CC5D79004DF8D4 /* backgammon.png */; };
+		AF06CCAC17CC5E50004DF8D4 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCAA17CC5E50004DF8D4 /* Default-Portrait@2x~ipad.png */; };
+		AF06CCAD17CC5E50004DF8D4 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCAB17CC5E50004DF8D4 /* Default-Landscape@2x~ipad.png */; };
+		AF06CCAF17CC5EAA004DF8D4 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCAE17CC5EAA004DF8D4 /* Default-Portrait~ipad.png */; };
+		AF06CCB117CC5EB4004DF8D4 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCB017CC5EB4004DF8D4 /* Default-Landscape~ipad.png */; };
+		AF06CCB317CC5F85004DF8D4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCB217CC5F85004DF8D4 /* Default.png */; };
 		AF1E553B17AF324F00672E4F /* dice1.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553517AF324F00672E4F /* dice1.png */; };
 		AF1E553C17AF324F00672E4F /* dice2.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553617AF324F00672E4F /* dice2.png */; };
 		AF1E553D17AF324F00672E4F /* dice3.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553717AF324F00672E4F /* dice3.png */; };
@@ -30,7 +39,6 @@
 		AF60090D179F6C0200C2DA69 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF60090B179F6C0200C2DA69 /* InfoPlist.strings */; };
 		AF60090F179F6C0200C2DA69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AF60090E179F6C0200C2DA69 /* main.m */; };
 		AF600913179F6C0200C2DA69 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF600912179F6C0200C2DA69 /* AppDelegate.m */; };
-		AF600915179F6C0200C2DA69 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AF600914179F6C0200C2DA69 /* Default.png */; };
 		AF600917179F6C0200C2DA69 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF600916179F6C0200C2DA69 /* Default@2x.png */; };
 		AF600919179F6C0200C2DA69 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF600918179F6C0200C2DA69 /* Default-568h@2x.png */; };
 		AF60091C179F6C0200C2DA69 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF60091B179F6C0200C2DA69 /* MainViewController.m */; };
@@ -45,6 +53,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF06CCA217CC5D79004DF8D4 /* backgammon-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgammon-72x72.png"; sourceTree = "<group>"; };
+		AF06CCA317CC5D79004DF8D4 /* backgammon-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgammon-114x114.png"; sourceTree = "<group>"; };
+		AF06CCA417CC5D79004DF8D4 /* backgammon-144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgammon-144x144.png"; sourceTree = "<group>"; };
+		AF06CCA517CC5D79004DF8D4 /* backgammon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgammon.png; sourceTree = "<group>"; };
+		AF06CCAA17CC5E50004DF8D4 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		AF06CCAB17CC5E50004DF8D4 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		AF06CCAE17CC5EAA004DF8D4 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		AF06CCB017CC5EB4004DF8D4 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		AF06CCB217CC5F85004DF8D4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AF1E553517AF324F00672E4F /* dice1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice1.png; sourceTree = "<group>"; };
 		AF1E553617AF324F00672E4F /* dice2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice2.png; sourceTree = "<group>"; };
 		AF1E553717AF324F00672E4F /* dice3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice3.png; sourceTree = "<group>"; };
@@ -127,6 +144,10 @@
 		AF1D57AE17B6EB8100BCF482 /* Image Files */ = {
 			isa = PBXGroup;
 			children = (
+				AF06CCA217CC5D79004DF8D4 /* backgammon-72x72.png */,
+				AF06CCA317CC5D79004DF8D4 /* backgammon-114x114.png */,
+				AF06CCA417CC5D79004DF8D4 /* backgammon-144x144.png */,
+				AF06CCA517CC5D79004DF8D4 /* backgammon.png */,
 				AF1E553517AF324F00672E4F /* dice1.png */,
 				AF1E553617AF324F00672E4F /* dice2.png */,
 				AF1E553717AF324F00672E4F /* dice3.png */,
@@ -149,6 +170,9 @@
 		AF6008F6179F6C0100C2DA69 = {
 			isa = PBXGroup;
 			children = (
+				AF06CCB217CC5F85004DF8D4 /* Default.png */,
+				AF06CCB017CC5EB4004DF8D4 /* Default-Landscape~ipad.png */,
+				AF06CCAE17CC5EAA004DF8D4 /* Default-Portrait~ipad.png */,
 				AF600908179F6C0200C2DA69 /* Backgammon */,
 				AF1E554117AF328600672E4F /* Resources */,
 				AF600901179F6C0200C2DA69 /* Frameworks */,
@@ -201,6 +225,8 @@
 		AF600909179F6C0200C2DA69 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AF06CCAA17CC5E50004DF8D4 /* Default-Portrait@2x~ipad.png */,
+				AF06CCAB17CC5E50004DF8D4 /* Default-Landscape@2x~ipad.png */,
 				AF60090A179F6C0200C2DA69 /* Backgammon-Info.plist */,
 				AF60090B179F6C0200C2DA69 /* InfoPlist.strings */,
 				AF60090E179F6C0200C2DA69 /* main.m */,
@@ -263,7 +289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF60090D179F6C0200C2DA69 /* InfoPlist.strings in Resources */,
-				AF600915179F6C0200C2DA69 /* Default.png in Resources */,
 				AF600917179F6C0200C2DA69 /* Default@2x.png in Resources */,
 				AF600919179F6C0200C2DA69 /* Default-568h@2x.png in Resources */,
 				AF600922179F6C0200C2DA69 /* MainViewController_iPhone.xib in Resources */,
@@ -286,6 +311,15 @@
 				AF550F4A17B6BB4700A930A5 /* start.wav in Resources */,
 				AF550F4B17B6BB4700A930A5 /* undo.wav in Resources */,
 				AF550F4C17B6BB4700A930A5 /* won.wav in Resources */,
+				AF06CCA617CC5D79004DF8D4 /* backgammon-72x72.png in Resources */,
+				AF06CCA717CC5D79004DF8D4 /* backgammon-114x114.png in Resources */,
+				AF06CCA817CC5D79004DF8D4 /* backgammon-144x144.png in Resources */,
+				AF06CCA917CC5D79004DF8D4 /* backgammon.png in Resources */,
+				AF06CCAC17CC5E50004DF8D4 /* Default-Portrait@2x~ipad.png in Resources */,
+				AF06CCAD17CC5E50004DF8D4 /* Default-Landscape@2x~ipad.png in Resources */,
+				AF06CCAF17CC5EAA004DF8D4 /* Default-Portrait~ipad.png in Resources */,
+				AF06CCB117CC5EB4004DF8D4 /* Default-Landscape~ipad.png in Resources */,
+				AF06CCB317CC5F85004DF8D4 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +422,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Peter Wansch (3EWEPMV8WF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Peter Wansch (3EWEPMV8WF)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -396,6 +431,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "D562A6F7-78C7-43DB-8881-BF1B704D1500";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D562A6F7-78C7-43DB-8881-BF1B704D1500";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

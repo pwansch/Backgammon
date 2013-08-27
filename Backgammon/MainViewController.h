@@ -16,7 +16,7 @@
 #define kScoreComputerKey	@"scoreComputer"
 #define kScorePlayerKey     @"scorePlayer"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate>
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *gameButton;
 @property (strong, nonatomic) IBOutlet UIButton *undoButton;

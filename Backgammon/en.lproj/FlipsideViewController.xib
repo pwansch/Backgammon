@@ -66,7 +66,7 @@
 					</object>
 					<object class="IBUITextView" id="841532386">
 						<reference key="NSNextResponder" ref="249263867"/>
-						<int key="NSvFlags">276</int>
+						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{20, 140}, {280, 388}}</string>
 						<reference key="NSSuperview" ref="249263867"/>
 						<reference key="NSWindow"/>
@@ -171,7 +171,7 @@ Lg</bytes>
 					</object>
 					<object class="IBUISwitch" id="672018079">
 						<reference key="NSNextResponder" ref="249263867"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">289</int>
 						<string key="NSFrame">{{206, 57}, {94, 27}}</string>
 						<reference key="NSSuperview" ref="249263867"/>
 						<reference key="NSWindow"/>
@@ -184,7 +184,7 @@ Lg</bytes>
 					</object>
 					<object class="IBUISwitch" id="132613499">
 						<reference key="NSNextResponder" ref="249263867"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">289</int>
 						<string key="NSFrame">{{206, 97}, {94, 27}}</string>
 						<reference key="NSSuperview" ref="249263867"/>
 						<reference key="NSWindow"/>

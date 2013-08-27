@@ -563,6 +563,62 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     }
 }
 
+- (short)leftIndex:(short)index {
+    if (index == 20) {
+        return 27;
+    }
+    
+    if (index == 27) {
+        return 19;
+    }
+    
+    if (index > 14 && index < 27) {
+        return index - 1;
+    }
+
+    if (index == 0) {
+        return 8;
+    }
+    
+    if (index == 7) {
+        return 0;
+    }
+    
+    if (index > 0 && index < 13) {
+        return index + 1;
+    }
+    
+    return -1;
+}
+
+- (short)rightIndex:(short)index {
+    if (index == 27) {
+        return 20;
+    }
+    
+    if (index == 19) {
+        return 27;
+    }
+    
+    if (index > 13 && index < 26) {
+        return index + 1;
+    }
+    
+    if (index == 8) {
+        return 0;
+    }
+    
+    if (index == 0) {
+        return 7;
+    }
+    
+    if (index > 1 && index < 14) {
+        return index - 1;
+    }
+    
+    return -1;
+}
+
 - (CGRect)rectCalc:(short)index :(short)taken {
     CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);

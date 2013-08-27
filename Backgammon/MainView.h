@@ -36,6 +36,8 @@
 - (short)getTouchIndex:(NSSet *)touches;
 - (BOOL)touchDice:(NSSet *)touches;
 - (void)invalidateIndex:(short)index;
+- (short)leftIndex:(short)index;
+- (short)rightIndex:(short)index;
 - (CGRect)rectCalc:(short)index :(short)taken;
 - (void)invalidateDice;
 - (void)animateDice;
