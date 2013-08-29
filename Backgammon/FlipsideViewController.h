@@ -12,6 +12,7 @@
 
 @protocol FlipsideViewControllerDelegate
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;
+- (void)flipsideViewControllerResetScores;
 @end
 
 @interface FlipsideViewController : UIViewController
@@ -21,5 +22,6 @@
 @property (strong, nonatomic) IBOutlet UISwitch *soundSwitch;
 
 - (IBAction)done:(id)sender;
+- (IBAction)reset:(id)sender;
 
 @end

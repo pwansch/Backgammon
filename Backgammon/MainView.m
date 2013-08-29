@@ -39,8 +39,6 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS);
 	if ((self = [super initWithCoder:coder]))
 	{
 		// Initialize variables
-        self.usScorePlayer = 0;
-        self.usScoreComputer = 0;
         self.usDice1 = 1;
         self.usDice2 = 1;
         self.fDrawText = NO;

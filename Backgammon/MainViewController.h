@@ -35,8 +35,6 @@
 @property (assign, atomic) SystemSoundID undoId;
 @property (assign, atomic) SystemSoundID wonId;
 @property (assign, atomic) BOOL m_sound;
-@property (assign, atomic) unsigned short usScoreComputer;
-@property (assign, atomic) unsigned short usScorePlayer;
 @property (assign, atomic) BOOL fAnimation;
 @property (assign, atomic) BOOL fGameOver;
 @property (assign, atomic) BOOL fStart;

@@ -54,6 +54,17 @@
     [self.delegate flipsideViewControllerDidFinish:self];
 }
 
+- (IBAction)reset:(id)sender
+{
+	// Save settings and write to disk
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:0 forKey:kScoreComputerKey];
+    [defaults setInteger:0 forKey:kScorePlayerKey];
+	[defaults synchronize];
+    
+    [self.delegate flipsideViewControllerResetScores];
+}
+
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view
     self.animationSwitch = nil;

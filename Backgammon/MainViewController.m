@@ -36,8 +36,6 @@
 @synthesize undoId;
 @synthesize wonId;
 @synthesize m_sound;
-@synthesize usScoreComputer;
-@synthesize usScorePlayer;
 @synthesize fAnimation;
 @synthesize fGameOver;
 @synthesize fStart;
@@ -90,8 +88,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.fAnimation = [defaults boolForKey:kAnimationKey];
     self.m_sound = [defaults boolForKey:kSoundKey];
-    self.usScoreComputer = [defaults integerForKey:kScoreComputerKey];
-    self.usScorePlayer = [defaults integerForKey:kScorePlayerKey];
+    mainView.usScoreComputer = [defaults integerForKey:kScoreComputerKey];
+    mainView.usScorePlayer = [defaults integerForKey:kScorePlayerKey];
     
     // Initialize variables
     [self initializeGame];
@@ -105,14 +103,23 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.fAnimation = [defaults boolForKey:kAnimationKey];
     self.m_sound = [defaults boolForKey:kSoundKey];
-    self.usScoreComputer = [defaults integerForKey:kScoreComputerKey];
-    self.usScorePlayer = [defaults integerForKey:kScorePlayerKey];
+    MainView *mainView = (MainView *)self.view;
+    mainView.usScoreComputer = [defaults integerForKey:kScoreComputerKey];
+    mainView.usScorePlayer = [defaults integerForKey:kScorePlayerKey];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [self.flipsidePopoverController dismissPopoverAnimated:YES];
     }
+}
+
+- (void)flipsideViewControllerResetScores
+{
+    MainView *mainView = (MainView *)self.view;
+    mainView.usScoreComputer = 0;
+    mainView.usScorePlayer = 0;
+    [mainView invalidateScore];
 }
 
 - (IBAction)showInfo:(id)sender
@@ -555,7 +562,7 @@
 		{
 			[self playSound:wonId];
 			short sWhatSum = sWhat(mainView.board, PLAYER);
-			self.usScorePlayer += sWhatSum;
+			mainView.usScorePlayer += sWhatSum;
             mainView.fDrawText = YES;
 			switch (sWhatSum)
 			{
@@ -794,7 +801,7 @@
 					[self playSound:lostId];
 					self.fGameOver = YES;
 					short sWhatSum = sWhat(mainView.board, COMPUTER);
-					self.usScoreComputer += sWhatSum;
+					mainView.usScoreComputer += sWhatSum;
                     self.fWait = NO;
                     
                     // invalidate display
