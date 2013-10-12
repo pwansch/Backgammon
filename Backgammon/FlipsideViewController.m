@@ -34,6 +34,9 @@
     self.animationSwitch.on = [defaults boolForKey:kAnimationKey];
 	self.soundSwitch.on = [defaults boolForKey:kSoundKey];
     self.textView.editable = NO;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        self.view.backgroundColor = [UIColor whiteColor];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
