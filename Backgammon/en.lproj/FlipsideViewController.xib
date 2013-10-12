@@ -37,11 +37,11 @@
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
                     </accessibility>
-                    <mutableString key="text">The object of Backgammon is to move the white stones into the home table (the six points in the lower right section of the table), and then to move all 15 stones into the pocket on the right.
+                    <string key="text">The object of Backgammon is to move the white stones into the home table (the six points in the lower right section of the table), and then to move all 15 stones into the pocket on the right.
 
 The black stones are moved by the computer to the upper right section of the table. The player who moves all stones into the pocket first, is the winner. White stones move along the top half to the left, then down, and along the bottom half to the right.
 
-Stones cannot land on any point that is already occupied by two or more opposing stones, but can bump singleton stones which are then moved to the middle bar. Stones from the bar move to upper right. After each roll, stones are advanced according to the numbers on the dice. Both dice can be applied to the same stone, but the stone must make the two moves consecutively. Whenever a player rolls doubles, that number is not taken twice, but four times.  When all stones are in the home table and you cannot advance any of your stones according to the exact number on the dice, you can move a stone into your pocket that is less points away than the number on your dice.  To determine who moves first you have to roll dice. The player with the higher numbers on the dice moves first. To move a stone, drag the stone to the new place. To roll the dice, tap the dice.</mutableString>
+Stones cannot land on any point that is already occupied by two or more opposing stones, but can bump singleton stones which are then moved to the middle bar. Stones from the bar move to upper right. After each roll, stones are advanced according to the numbers on the dice. Both dice can be applied to the same stone, but the stone must make the two moves consecutively. Whenever a player rolls doubles, that number is not taken twice, but four times.  When all stones are in the home table and you cannot advance any of your stones according to the exact number on the dice, you can move a stone into your pocket that is less points away than the number on your dice.  To determine who moves first you have to roll dice. The player with the higher numbers on the dice moves first. To move a stone, drag the stone to the new place. To roll the dice, tap the dice.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -78,7 +78,6 @@ Stones cannot land on any point that is already occupied by two or more opposing
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
