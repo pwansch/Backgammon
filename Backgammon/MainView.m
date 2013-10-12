@@ -12,6 +12,7 @@ int counterxx = 0;
 @interface MainView ()
 // Class extensions and utility functions
 CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS);
+- (CGRect)statusBarFrameViewRect;
 @end
 
 @implementation MainView
@@ -72,13 +73,19 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     CGPoint pointBorder[4];
     CGPoint ptl;
 
-	// Calculate block size, starting point and offset
-    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
-    CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
-    
 	// Obtain graphics context and set defaults
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextSetLineWidth(context, 1.0);
+    CGContextSetLineWidth(context, 1.0);
+    UIFont *font = [UIFont systemFontOfSize:14];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    NSDictionary *dictionary = @{NSFontAttributeName: font,  NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
+	// Calculate block size, starting point and offset
+    CGRect statusBarFrame = [self statusBarFrameViewRect];
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), (self.bounds.size.height - statusBarFrame.size.height) / (DIVISIONSY + 2));
+    CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
     
     // Draw the background in green
     CGContextSetFillColorWithColor(context, [UIColor colorWithRed:0.0f green:0.5f blue:0.0f alpha:1.0f].CGColor);
@@ -150,21 +157,19 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     } 
         
 	// Draw scores player
-    UIFont *font = [UIFont systemFontOfSize:20];
-    rectPaint = CGRectMake(ptlOffset.x + 8 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2, 3 * NOPOINTS, font.pointSize);
-        
+    rectPaint = CGRectMake(ptlOffset.x + 8 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize * 2);
     if (CGRectIntersectsRect(rectPaint, rect)) {
         [[UIColor whiteColor] set];
         NSString *score = [NSString stringWithFormat:@"%d", self.usScorePlayer];
-        [score drawInRect:rectPaint withFont:font lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
+        [score drawInRect:rectPaint withAttributes:dictionary];
     }
         
 	// Draw scores computer
-    rectPaint = CGRectMake(ptlOffset.x + 11 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2, 3 * NOPOINTS, font.pointSize);
+    rectPaint = CGRectMake(ptlOffset.x + 11 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize * 2);
     if (CGRectIntersectsRect(rectPaint, rect)) {
         [[UIColor blackColor] set];
         NSString *score = [NSString stringWithFormat:@"%d", self.usScoreComputer];
-        [score drawInRect:rectPaint withFont:font lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
+        [score drawInRect:rectPaint withAttributes:dictionary];
     }
         
     // Draw board borders
@@ -349,15 +354,12 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
             // Zeichnen der einzelnen Steine
             for (int j = 0; j < self.board.usNo[idx]; j++)
             {
-                switch (self.board.fWho[idx]) {
-                    case COMPUTER:
-                        CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-                        CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
-                        break;
-                    case PLAYER:
-                        CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
-                        CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
-                        break;
+                if (self.board.fWho[idx] == COMPUTER) {
+                    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+                    CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
+                } else if (self.board.fWho[idx] == PLAYER) {
+                    CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
+                    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
                 }
                 CGRect rectStone = CGRectMake((idx == 26) ? (ptl.x + 4) : (ptl.x + 3), ptl.y - NOPOINTS - 4, NOPOINTS - 2, NOPOINTS - 2);
                 CGContextAddEllipseInRect(context, rectStone);
@@ -395,15 +397,12 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
             // Zeichnen der einzelnen Steine
 			for (int j = 0; j < self.board.usNo[idx]; j++)
 			{
-                switch (self.board.fWho[idx]) {
-                    case COMPUTER:
-                        CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-                        CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
-                        break;
-                    case PLAYER:
-                        CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
-                        CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
-                        break;
+                if (self.board.fWho[idx] == COMPUTER) {
+                    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+                    CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
+                } else if (self.board.fWho[idx] == PLAYER) {
+                    CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
+                    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
                 }
                 CGRect rectStone = CGRectMake((idx == 1) ? (ptl.x + 4) : (ptl.x + 3), ptl.y - NOPOINTS - 4, NOPOINTS - 2, NOPOINTS - 2);
                 CGContextAddEllipseInRect(context, rectStone);
@@ -458,11 +457,10 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
         // Ausgabetext zeichnen
         if (self.fDrawText) {
             // Draw text
-            UIFont *font = [UIFont systemFontOfSize:20];
-            rectPaint = CGRectMake(ptlOffset.x, (ptlOffset.y + NOPOINTS - font.pointSize) / 2 - 4, NOPOINTS * (DIVISIONSX + 2), font.pointSize);
+            rectPaint = CGRectMake(ptlOffset.x, statusBarFrame.size.height + (ptlOffset.y + NOPOINTS - statusBarFrame.size.height - font.pointSize * 2) / 2, NOPOINTS * (DIVISIONSX + 2), font.pointSize * 2);
             if (CGRectIntersectsRect(rectPaint, rect)) {
                 [[UIColor whiteColor] set];
-                [self.text drawInRect:rectPaint withFont:font lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
+                [self.text drawInRect:rectPaint withAttributes:dictionary];
             }
         }
 }
@@ -491,8 +489,10 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
 	CGPoint point = [touch locationInView:self];
     
     // Calculate index
-    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGRect statusBarFrame = [self statusBarFrameViewRect];
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), (self.bounds.size.height - statusBarFrame.size.height) / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
+
     short x = (point.x - ptlOffset.x) / NOPOINTS;
     short y = (point.y - ptlOffset.y) / NOPOINTS;
     if (y < 0)
@@ -513,7 +513,8 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
 	CGPoint point = [touch locationInView:self];
     
     // Calculate index
-    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGRect statusBarFrame = [self statusBarFrameViewRect];
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), (self.bounds.size.height - statusBarFrame.size.height) / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
     CGPoint ptl;
     ptl.x = (ptlOffset.x + NOPOINTS + (6 * NOPOINTS - (self.hbm1.size.width * 2.5)) / 2);
@@ -525,7 +526,8 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
 
 - (void)invalidateIndex:(short)index {
     // Calculate index
-    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGRect statusBarFrame = [self statusBarFrameViewRect];
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), (self.bounds.size.height - statusBarFrame.size.height) / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
     CGRect rGetRectl[NOINDEXES] = {
         {ptlOffset.x + 7 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS - 1, NOPOINTS + 1, 5 * NOPOINTS + 1},
@@ -618,7 +620,8 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
 }
 
 - (CGRect)rectCalc:(short)index :(short)taken {
-    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGRect statusBarFrame = [self statusBarFrameViewRect];
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), (self.bounds.size.height - statusBarFrame.size.height) / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
     CGRect rGetRectl[NOINDEXES] = {
         {ptlOffset.x + 3 + 7 * NOPOINTS, ptlOffset.y + 8 * NOPOINTS, NOPOINTS - 2, NOPOINTS - 2},
@@ -690,7 +693,8 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
 }
 
 - (void)invalidateDice {
-    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGRect statusBarFrame = [self statusBarFrameViewRect];
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), (self.bounds.size.height - statusBarFrame.size.height) / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
     CGPoint ptl;
     ptl.x = (ptlOffset.x + NOPOINTS + (6 * NOPOINTS - (self.hbm1.size.width * 2.5)) / 2);
@@ -702,7 +706,8 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
 }
 
 - (void)animateDice {
-    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGRect statusBarFrame = [self statusBarFrameViewRect];
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), (self.bounds.size.height - statusBarFrame.size.height) / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
     CGPoint ptl;
     ptl.x = (ptlOffset.x + NOPOINTS + (6 * NOPOINTS - (self.hbm1.size.width * 2.5)) / 2);
@@ -759,25 +764,35 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
 }
 
 - (void)invalidateText {
-    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGRect statusBarFrame = [self statusBarFrameViewRect];
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), (self.bounds.size.height - statusBarFrame.size.height) / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
-    UIFont *font = [UIFont systemFontOfSize:20];
-    CGRect rectUpdate = CGRectMake(ptlOffset.x, (ptlOffset.y + NOPOINTS - font.pointSize) / 2 - 8, NOPOINTS * (DIVISIONSX + 2), font.pointSize + 8);
+    UIFont *font = [UIFont systemFontOfSize:14];
+    CGRect rectUpdate = CGRectMake(ptlOffset.x, statusBarFrame.size.height + (ptlOffset.y + NOPOINTS - statusBarFrame.size.height - font.pointSize * 2) / 2, NOPOINTS * (DIVISIONSX + 2), font.pointSize * 2);
     [self setNeedsDisplayInRect:rectUpdate];
 }
 
 - (void)invalidateScore {
-    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), self.bounds.size.height / (DIVISIONSY + 2));
+    CGRect statusBarFrame = [self statusBarFrameViewRect];
+    CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), (self.bounds.size.height - statusBarFrame.size.height) / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
-    UIFont *font = [UIFont systemFontOfSize:20];
-    CGRect rectUpdate = CGRectMake(ptlOffset.x + 8 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize + 8);
+    UIFont *font = [UIFont systemFontOfSize:14];
+    CGRect rectUpdate = CGRectMake(ptlOffset.x + 8 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize * 2);
     [self setNeedsDisplayInRect:rectUpdate];
-    rectUpdate = CGRectMake(ptlOffset.x + 11 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize + 8);
+    rectUpdate = CGRectMake(ptlOffset.x + 11 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize * 2);
     [self setNeedsDisplayInRect:rectUpdate];
 }
 
 - (PBOARD)getBoardPointer {
     return &board;
+}
+
+- (CGRect)statusBarFrameViewRect
+{
+    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
+    CGRect statusBarWindowRect = [self.window convertRect:statusBarFrame fromWindow: nil];
+    CGRect statusBarViewRect = [self convertRect:statusBarWindowRect fromView: nil];
+    return statusBarViewRect;
 }
 
 - (void)draw:(unsigned short) usFromIndex :(unsigned short) usToIndex :(BOOL)usToWho :(BOOL) fUpdateBar :(BOOL) fAnimation{

@@ -55,7 +55,7 @@
     [super viewDidLoad];
 	
     // Initialize the randomizer
-    srandom(time(NULL));
+    srandom((int)time(NULL));
     
     // Create system sounds
     NSString *path = [[NSBundle mainBundle] pathForResource:@"bump" ofType:@"wav"];
@@ -120,6 +120,8 @@
     mainView.usScoreComputer = 0;
     mainView.usScorePlayer = 0;
     [mainView invalidateScore];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reset Scores" message:@"Player and computer scores reset to 0." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 - (IBAction)showInfo:(id)sender
@@ -215,6 +217,7 @@
 	self.usDice2Old = mainView.usDice2;
 	self.fPlayer = YES;
 	self.fWait = NO;
+    self.undoButton.hidden = NO;
     
     // Initialize board
     BOARD boardHilf;
@@ -496,8 +499,10 @@
 			pBoard->usNo[index]++;
 			self.sMoves--;
 			// ueberpruefen ob der Zug den Sieg bedeutet
-			if (mainView.board.usNo[1] == 15)
+			if (mainView.board.usNo[1] == 15) {
 				self.fGameOver = YES;
+                self.undoButton.hidden = YES;
+            }
             
 			if (!self.fGameOver)
 				if (self.sMoves == 0 || !fIsPlayerMovePossible(mainView.board, asDice))
@@ -806,6 +811,7 @@
                     
                     // invalidate display
                     dispatch_sync(dispatch_get_main_queue(), ^{
+                        self.undoButton.hidden = YES;
                         mainView.fDrawText = YES;
                         switch (sWhatSum)
                         {

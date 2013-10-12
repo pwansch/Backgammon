@@ -7,15 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF06CCA617CC5D79004DF8D4 /* backgammon-72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCA217CC5D79004DF8D4 /* backgammon-72x72.png */; };
-		AF06CCA717CC5D79004DF8D4 /* backgammon-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCA317CC5D79004DF8D4 /* backgammon-114x114.png */; };
-		AF06CCA817CC5D79004DF8D4 /* backgammon-144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCA417CC5D79004DF8D4 /* backgammon-144x144.png */; };
 		AF06CCA917CC5D79004DF8D4 /* backgammon.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCA517CC5D79004DF8D4 /* backgammon.png */; };
-		AF06CCAC17CC5E50004DF8D4 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCAA17CC5E50004DF8D4 /* Default-Portrait@2x~ipad.png */; };
-		AF06CCAD17CC5E50004DF8D4 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCAB17CC5E50004DF8D4 /* Default-Landscape@2x~ipad.png */; };
-		AF06CCAF17CC5EAA004DF8D4 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCAE17CC5EAA004DF8D4 /* Default-Portrait~ipad.png */; };
-		AF06CCB117CC5EB4004DF8D4 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCB017CC5EB4004DF8D4 /* Default-Landscape~ipad.png */; };
-		AF06CCB317CC5F85004DF8D4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AF06CCB217CC5F85004DF8D4 /* Default.png */; };
 		AF1E553B17AF324F00672E4F /* dice1.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553517AF324F00672E4F /* dice1.png */; };
 		AF1E553C17AF324F00672E4F /* dice2.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553617AF324F00672E4F /* dice2.png */; };
 		AF1E553D17AF324F00672E4F /* dice3.png in Resources */ = {isa = PBXBuildFile; fileRef = AF1E553717AF324F00672E4F /* dice3.png */; };
@@ -49,19 +41,18 @@
 		AF600930179F704A00C2DA69 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF60092F179F704A00C2DA69 /* MainView.m */; };
 		AF7743BB17B33EE700303E64 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF7743BA17B33EE700303E64 /* AudioToolbox.framework */; };
 		AF7F13BC17A0B92B005FBADA /* Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7F13BB17A0B92B005FBADA /* Algorithm.m */; };
+		AF99F5D21809D98800924D15 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = AF99F5CE1809D98800924D15 /* Default-Landscape.png */; };
+		AF99F5D31809D98800924D15 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF99F5CF1809D98800924D15 /* Default-Landscape@2x.png */; };
+		AF99F5D41809D98800924D15 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = AF99F5D01809D98800924D15 /* Default-Portrait.png */; };
+		AF99F5D51809D98800924D15 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF99F5D11809D98800924D15 /* Default-Portrait@2x.png */; };
+		AF99F5D91809DB3600924D15 /* backgammon-76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = AF99F5D61809DB3600924D15 /* backgammon-76x76.png */; };
+		AF99F5DA1809DB3600924D15 /* backgammon-120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = AF99F5D71809DB3600924D15 /* backgammon-120x120.png */; };
+		AF99F5DB1809DB3600924D15 /* backgammon-152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = AF99F5D81809DB3600924D15 /* backgammon-152x152.png */; };
 		AFD3976717C16F5F0068E2A8 /* StoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD3976617C16F5F0068E2A8 /* StoneView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AF06CCA217CC5D79004DF8D4 /* backgammon-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgammon-72x72.png"; sourceTree = "<group>"; };
-		AF06CCA317CC5D79004DF8D4 /* backgammon-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgammon-114x114.png"; sourceTree = "<group>"; };
-		AF06CCA417CC5D79004DF8D4 /* backgammon-144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgammon-144x144.png"; sourceTree = "<group>"; };
 		AF06CCA517CC5D79004DF8D4 /* backgammon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgammon.png; sourceTree = "<group>"; };
-		AF06CCAA17CC5E50004DF8D4 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
-		AF06CCAB17CC5E50004DF8D4 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
-		AF06CCAE17CC5EAA004DF8D4 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
-		AF06CCB017CC5EB4004DF8D4 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		AF06CCB217CC5F85004DF8D4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AF1E553517AF324F00672E4F /* dice1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice1.png; sourceTree = "<group>"; };
 		AF1E553617AF324F00672E4F /* dice2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice2.png; sourceTree = "<group>"; };
 		AF1E553717AF324F00672E4F /* dice3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dice3.png; sourceTree = "<group>"; };
@@ -89,7 +80,6 @@
 		AF600910179F6C0200C2DA69 /* Backgammon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Backgammon-Prefix.pch"; sourceTree = "<group>"; };
 		AF600911179F6C0200C2DA69 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AF600912179F6C0200C2DA69 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AF600914179F6C0200C2DA69 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AF600916179F6C0200C2DA69 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		AF600918179F6C0200C2DA69 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AF60091A179F6C0200C2DA69 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -104,6 +94,13 @@
 		AF7743BA17B33EE700303E64 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		AF7F13BA17A0B92B005FBADA /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
 		AF7F13BB17A0B92B005FBADA /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Algorithm.m; sourceTree = "<group>"; };
+		AF99F5CE1809D98800924D15 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
+		AF99F5CF1809D98800924D15 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
+		AF99F5D01809D98800924D15 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		AF99F5D11809D98800924D15 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
+		AF99F5D61809DB3600924D15 /* backgammon-76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgammon-76x76.png"; sourceTree = "<group>"; };
+		AF99F5D71809DB3600924D15 /* backgammon-120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgammon-120x120.png"; sourceTree = "<group>"; };
+		AF99F5D81809DB3600924D15 /* backgammon-152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgammon-152x152.png"; sourceTree = "<group>"; };
 		AFD3976517C16F5F0068E2A8 /* StoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneView.h; sourceTree = "<group>"; };
 		AFD3976617C16F5F0068E2A8 /* StoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,9 +141,9 @@
 		AF1D57AE17B6EB8100BCF482 /* Image Files */ = {
 			isa = PBXGroup;
 			children = (
-				AF06CCA217CC5D79004DF8D4 /* backgammon-72x72.png */,
-				AF06CCA317CC5D79004DF8D4 /* backgammon-114x114.png */,
-				AF06CCA417CC5D79004DF8D4 /* backgammon-144x144.png */,
+				AF99F5D61809DB3600924D15 /* backgammon-76x76.png */,
+				AF99F5D71809DB3600924D15 /* backgammon-120x120.png */,
+				AF99F5D81809DB3600924D15 /* backgammon-152x152.png */,
 				AF06CCA517CC5D79004DF8D4 /* backgammon.png */,
 				AF1E553517AF324F00672E4F /* dice1.png */,
 				AF1E553617AF324F00672E4F /* dice2.png */,
@@ -170,9 +167,6 @@
 		AF6008F6179F6C0100C2DA69 = {
 			isa = PBXGroup;
 			children = (
-				AF06CCB217CC5F85004DF8D4 /* Default.png */,
-				AF06CCB017CC5EB4004DF8D4 /* Default-Landscape~ipad.png */,
-				AF06CCAE17CC5EAA004DF8D4 /* Default-Portrait~ipad.png */,
 				AF600908179F6C0200C2DA69 /* Backgammon */,
 				AF1E554117AF328600672E4F /* Resources */,
 				AF600901179F6C0200C2DA69 /* Frameworks */,
@@ -225,13 +219,14 @@
 		AF600909179F6C0200C2DA69 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AF06CCAA17CC5E50004DF8D4 /* Default-Portrait@2x~ipad.png */,
-				AF06CCAB17CC5E50004DF8D4 /* Default-Landscape@2x~ipad.png */,
+				AF99F5CE1809D98800924D15 /* Default-Landscape.png */,
+				AF99F5CF1809D98800924D15 /* Default-Landscape@2x.png */,
+				AF99F5D01809D98800924D15 /* Default-Portrait.png */,
+				AF99F5D11809D98800924D15 /* Default-Portrait@2x.png */,
 				AF60090A179F6C0200C2DA69 /* Backgammon-Info.plist */,
 				AF60090B179F6C0200C2DA69 /* InfoPlist.strings */,
 				AF60090E179F6C0200C2DA69 /* main.m */,
 				AF600910179F6C0200C2DA69 /* Backgammon-Prefix.pch */,
-				AF600914179F6C0200C2DA69 /* Default.png */,
 				AF600916179F6C0200C2DA69 /* Default@2x.png */,
 				AF600918179F6C0200C2DA69 /* Default-568h@2x.png */,
 			);
@@ -289,8 +284,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF60090D179F6C0200C2DA69 /* InfoPlist.strings in Resources */,
+				AF99F5D51809D98800924D15 /* Default-Portrait@2x.png in Resources */,
+				AF99F5D31809D98800924D15 /* Default-Landscape@2x.png in Resources */,
 				AF600917179F6C0200C2DA69 /* Default@2x.png in Resources */,
 				AF600919179F6C0200C2DA69 /* Default-568h@2x.png in Resources */,
+				AF99F5D91809DB3600924D15 /* backgammon-76x76.png in Resources */,
+				AF99F5DA1809DB3600924D15 /* backgammon-120x120.png in Resources */,
 				AF600922179F6C0200C2DA69 /* MainViewController_iPhone.xib in Resources */,
 				AF600925179F6C0200C2DA69 /* MainViewController_iPad.xib in Resources */,
 				AF600928179F6C0200C2DA69 /* FlipsideViewController.xib in Resources */,
@@ -301,9 +300,12 @@
 				AF1E553F17AF324F00672E4F /* dice5.png in Resources */,
 				AF1E554017AF324F00672E4F /* dice6.png in Resources */,
 				AF550F4217B6BB4700A930A5 /* bump.wav in Resources */,
+				AF99F5D21809D98800924D15 /* Default-Landscape.png in Resources */,
 				AF550F4317B6BB4700A930A5 /* dice.wav in Resources */,
+				AF99F5DB1809DB3600924D15 /* backgammon-152x152.png in Resources */,
 				AF550F4417B6BB4700A930A5 /* end.wav in Resources */,
 				AF550F4517B6BB4700A930A5 /* illegal.wav in Resources */,
+				AF99F5D41809D98800924D15 /* Default-Portrait.png in Resources */,
 				AF550F4617B6BB4700A930A5 /* lost.wav in Resources */,
 				AF550F4717B6BB4700A930A5 /* new.wav in Resources */,
 				AF550F4817B6BB4700A930A5 /* pickup.wav in Resources */,
@@ -311,15 +313,7 @@
 				AF550F4A17B6BB4700A930A5 /* start.wav in Resources */,
 				AF550F4B17B6BB4700A930A5 /* undo.wav in Resources */,
 				AF550F4C17B6BB4700A930A5 /* won.wav in Resources */,
-				AF06CCA617CC5D79004DF8D4 /* backgammon-72x72.png in Resources */,
-				AF06CCA717CC5D79004DF8D4 /* backgammon-114x114.png in Resources */,
-				AF06CCA817CC5D79004DF8D4 /* backgammon-144x144.png in Resources */,
 				AF06CCA917CC5D79004DF8D4 /* backgammon.png in Resources */,
-				AF06CCAC17CC5E50004DF8D4 /* Default-Portrait@2x~ipad.png in Resources */,
-				AF06CCAD17CC5E50004DF8D4 /* Default-Landscape@2x~ipad.png in Resources */,
-				AF06CCAF17CC5EAA004DF8D4 /* Default-Portrait~ipad.png in Resources */,
-				AF06CCB117CC5EB4004DF8D4 /* Default-Landscape~ipad.png in Resources */,
-				AF06CCB317CC5F85004DF8D4 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +376,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -403,7 +398,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -414,6 +409,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -429,7 +425,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "D562A6F7-78C7-43DB-8881-BF1B704D1500";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D562A6F7-78C7-43DB-8881-BF1B704D1500";
@@ -445,6 +441,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Backgammon/Backgammon-Prefix.pch";
 				INFOPLIST_FILE = "Backgammon/Backgammon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -457,6 +454,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Backgammon/Backgammon-Prefix.pch";
 				INFOPLIST_FILE = "Backgammon/Backgammon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

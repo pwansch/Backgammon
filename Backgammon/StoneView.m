@@ -27,15 +27,12 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextSetLineWidth(context, 1.0);
     
-    switch (self.fWho) {
-        case COMPUTER:
-            CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-            CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
-            break;
-        case PLAYER:
-            CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
-            CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
-            break;
+    if (self.fWho == COMPUTER) {
+        CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+        CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
+    } else if (self.fWho == PLAYER) {
+        CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
+        CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
     }
 
     CGContextAddEllipseInRect(context, self.bounds);

@@ -19,7 +19,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.contentSizeForViewInPopover = CGSizeMake(320.0, 480.0);
+        self.preferredContentSize = CGSizeMake(320.0, 568.0);
     }
     return self;
 }
@@ -33,6 +33,14 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.animationSwitch.on = [defaults boolForKey:kAnimationKey];
 	self.soundSwitch.on = [defaults boolForKey:kSoundKey];
+    self.textView.editable = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSRange r = {0,0};
+    [self.textView scrollRangeToVisible:r];
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning

@@ -20,6 +20,7 @@
 @property (weak, nonatomic) id <FlipsideViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UISwitch *animationSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *soundSwitch;
+@property (strong, nonatomic) IBOutlet UITextView *textView;
 
 - (IBAction)done:(id)sender;
 - (IBAction)reset:(id)sender;
