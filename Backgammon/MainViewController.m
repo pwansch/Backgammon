@@ -644,7 +644,7 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
 	if(!self.fGameOver)
 	{
-        BOOL fFirst;
+        BOOL fFirst = NO;
         unsigned short usDice1Old_, usDice2Old_;
         
 		// roll the dices

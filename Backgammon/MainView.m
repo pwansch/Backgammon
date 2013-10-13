@@ -76,7 +76,12 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
 	// Obtain graphics context and set defaults
 	CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0);
-    UIFont *font = [UIFont systemFontOfSize:14];
+    UIFont *font;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        font = [UIFont systemFontOfSize:14];
+    } else {
+        font = [UIFont systemFontOfSize:28];
+    }
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentCenter;
@@ -766,7 +771,12 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     CGRect statusBarFrame = [self statusBarFrameViewRect];
     CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), (self.bounds.size.height - statusBarFrame.size.height) / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
-    UIFont *font = [UIFont systemFontOfSize:14];
+    UIFont *font;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        font = [UIFont systemFontOfSize:14];
+    } else {
+        font = [UIFont systemFontOfSize:28];
+    }
     CGRect rectUpdate = CGRectMake(ptlOffset.x, statusBarFrame.size.height + (ptlOffset.y + NOPOINTS - statusBarFrame.size.height - font.pointSize * 2) / 2, NOPOINTS * (DIVISIONSX + 2), font.pointSize * 2);
     [self setNeedsDisplayInRect:rectUpdate];
 }
@@ -775,7 +785,12 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     CGRect statusBarFrame = [self statusBarFrameViewRect];
     CGFloat NOPOINTS = MIN(self.bounds.size.width / (DIVISIONSX + 2), (self.bounds.size.height - statusBarFrame.size.height) / (DIVISIONSY + 2));
     CGPoint ptlOffset = CGPointMake((self.bounds.size.width - ((DIVISIONSX + 2) * NOPOINTS)) / 2, (self.bounds.size.height - ((DIVISIONSY + 2) * NOPOINTS)) / 2);
-    UIFont *font = [UIFont systemFontOfSize:14];
+    UIFont *font;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        font = [UIFont systemFontOfSize:14];
+    } else {
+        font = [UIFont systemFontOfSize:28];
+    }
     CGRect rectUpdate = CGRectMake(ptlOffset.x + 8 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize * 2);
     [self setNeedsDisplayInRect:rectUpdate];
     rectUpdate = CGRectMake(ptlOffset.x + 11 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize * 2);
