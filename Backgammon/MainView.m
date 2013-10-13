@@ -80,7 +80,8 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentCenter;
-    NSDictionary *dictionary = @{NSFontAttributeName: font,  NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: [UIColor whiteColor]};
+    NSDictionary *dictionaryWhite = @{NSFontAttributeName: font,  NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: [UIColor whiteColor]};
+    NSDictionary *dictionaryBlack = @{NSFontAttributeName: font,  NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: [UIColor blackColor]};
     
 	// Calculate block size, starting point and offset
     CGRect statusBarFrame = [self statusBarFrameViewRect];
@@ -159,17 +160,15 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
 	// Draw scores player
     rectPaint = CGRectMake(ptlOffset.x + 8 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize * 2);
     if (CGRectIntersectsRect(rectPaint, rect)) {
-        [[UIColor whiteColor] set];
         NSString *score = [NSString stringWithFormat:@"%d", self.usScorePlayer];
-        [score drawInRect:rectPaint withAttributes:dictionary];
+        [score drawInRect:rectPaint withAttributes:dictionaryWhite];
     }
         
 	// Draw scores computer
     rectPaint = CGRectMake(ptlOffset.x + 11 * NOPOINTS, ptlOffset.y + ulConvertY(8 * NOPOINTS, NOPOINTS) + (2 * NOPOINTS - font.pointSize) / 2 - 4, 3 * NOPOINTS, font.pointSize * 2);
     if (CGRectIntersectsRect(rectPaint, rect)) {
-        [[UIColor blackColor] set];
         NSString *score = [NSString stringWithFormat:@"%d", self.usScoreComputer];
-        [score drawInRect:rectPaint withAttributes:dictionary];
+        [score drawInRect:rectPaint withAttributes:dictionaryBlack];
     }
         
     // Draw board borders
@@ -460,7 +459,7 @@ CGFloat ulConvertY(CGFloat ulFromY, CGFloat NOPOINTS)
             rectPaint = CGRectMake(ptlOffset.x, statusBarFrame.size.height + (ptlOffset.y + NOPOINTS - statusBarFrame.size.height - font.pointSize * 2) / 2, NOPOINTS * (DIVISIONSX + 2), font.pointSize * 2);
             if (CGRectIntersectsRect(rectPaint, rect)) {
                 [[UIColor whiteColor] set];
-                [self.text drawInRect:rectPaint withAttributes:dictionary];
+                [self.text drawInRect:rectPaint withAttributes:dictionaryWhite];
             }
         }
 }
